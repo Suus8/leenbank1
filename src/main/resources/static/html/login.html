@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Leenmanbank Login</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../dependencies/all.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="../dependencies/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dependencies/adminlte.min.css">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <!-- /.login-logo -->
+    <div class="card card-outline card-primary">
+        <div class="card-body">
+            <p class="login-box-msg">Inloggen bij Leenmanbank</p>
+
+            <!--  action="consumerAccountsOverviewUS4.html"-->
+            <form action="#">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="username" placeholder="Gebruikersnaam">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" id="password" placeholder="Wachtwoord">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
+                </div>
+                <label id="wrong_password" style="display:none; color: red">Wrong Password</label>
+                <div class="row">
+                    <div class="col-7">
+                        <div class="icheck-primary">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">
+                                Onthouden
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                    <div class="col-5">
+                        <button type="submit" class="btn btn-primary btn-block login"> Aanmelden
+                        </button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+            </form>
+            <p class="mb-1">
+                <a href="forgot-password.html">Wachtwoord vergeten?</a>
+            </p>
+            <p class="mb-0">
+                <a href="/html/openAccount/openAccountChooseType.html" class="text-center">Word klant</a>
+            </p>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="../dependencies/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../dependencies/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../dependencies/adminlte.min.js"></script>
+<script src="../javascript/login.js"></script>
+</body>
+</html>

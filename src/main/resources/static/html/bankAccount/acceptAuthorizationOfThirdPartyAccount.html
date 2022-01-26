@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Accepteer een machtiging tot een andere account</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../dependencies/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../dependencies/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../dependencies/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../dependencies/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dependencies/adminlte.min.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <!-- Script -->
+    <script rel="script" src="../../javascript/domManipulationMethods.js"></script>
+    <script rel="script" src="../../javascript/regularExpressionChecks.js"></script>
+    <script rel="script" src="../../javascript/openAccountScript.js"></script>
+    <script rel="script" src="../../javascript/authorizeThirdPartyForAccountScript.js"></script>
+    <!--
+5. De beoogde mede-rekeninghouder logt in op de site en kan in de rekeningoverzichtpagina de functie "koppel nieuwe rekeningäctiveren.
+6. De beoogde mede-rekeninghouder voert het nummer van de rekening in en de beveiligingscode.
+7. Het systeem verifieert de code, de gebruikersnaam en het rekeningnummer en als dat klopt wordt de rekening gekoppeld.
+8. De beoogde mede-rekeninghouder gaat terug naar de rekeningoverzichtpagina en ziet daar de nieuw gekoppelde rekening in de lĳst.
+    -->
+</head>
+
+<body class="hold-transition layout-top-nav" onload="setUsername()">
+<!--TODO create button on dashboard + onload load pending authorizations-->
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <img src="../../images/cmc_logo.png" alt="CMC Logo" class="brand-image">
+                <span class="brand-text font-weight-bold cmc-blauw">LeenmanBank</span>
+            </a>
+            <!-- Navbar toggler -->
+            <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Rekeningoverzicht</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Right navbar links -->
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                <li class="nav-item">
+                    <a href="../../html/login.html" class="nav-link">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- /.navbar -->
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- PAGE HEADER (and active client name indicator on the right) -->
+        <div class="content-header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Accepteer machtiging voor rekening van dhr./mevr. NAAMREKENINGHOUDER</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <h5 id="active-client-name-breadcrumb" class="float-right"></h5>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+
+        <!-- MAIN CONTENT -->
+        <div class="content">
+            <div class="container">
+
+                <form>
+                    <label for="accountNumber">Voer het rekeningnummer (geen IBAN) in van de eigenaar van de rekening
+                        waarvoor u gemachtigd wordt: </label>
+                    <input id="accountNumber" type="number" onfocus="showElement('accountRequirements')"
+                           onblur="hideElement('accountRequirements')" onkeyup="checkAccountRequirements()" required>
+                    <div>
+                        <ul class="inputRequirements" id="accountRequirements" style="display: none">
+                            <li id="accountReq10Chars">Een rekeningnummer bij LeenmanBank bevat altijd 10 getallen</li>
+                        </ul>
+                    </div>
+                    <br>
+
+                    <label for="code">Voer de beveiligingscode in die u van de eigenaar van de rekening heeft
+                        gekregen: </label>
+                    <input id="code" type="number" onfocus="showElement('codeRequirements')"
+                           onblur="hideElement('codeRequirements')" onkeyup="checkCodeRequirements()" required>
+                    <div>
+                        <ul class="inputRequirements" id="codeRequirements" style="display: none">
+                            <li id="codeReq5Chars">De code moet 5 getallen bevatten</li>
+                        </ul>
+                    </div>
+                    <br>
+
+                    <button type="button" onclick="acceptAuthorization()">Controleer en accepteer</button>
+                    <br>
+
+                    <p id="infoAfterSubmit" style="display: none">What to do when authorization is processed?</p>
+                    <br>
+
+                    <button type="button"><a href="../dashboard/dashboardClient.html" id="completeFormButton"
+                                             onclick="clearLocalStorage()">Reset</a></button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- ./wrapper -->
+
+</body>
+</html>

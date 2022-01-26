@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Management Dashboard - LeenmanBank</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../dependencies/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../dependencies/fontawesome-free/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="../../dependencies/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../dependencies/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../dependencies/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dependencies/adminlte.min.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/managementReportsDashboard.css">
+
+</head>
+<body class="hold-transition layout-top-nav">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+            <div class="container">
+                <a href="#" class="navbar-brand">
+                    <img src="../../images/cmc_logo.png" alt="CMC Logo" class="brand-image">
+                    <span class="brand-text font-weight-bold cmc-blauw">LeenmanBank</span>
+                </a>
+                <!-- Navbar toggler -->
+                <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
+                        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="../dashboard/dashboardClient.html" class="nav-link">Rekeningoverzicht</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Right navbar links -->
+                <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                    <li class="nav-item">
+                        <a href="../../html/login.html" class="nav-link">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- /.navbar -->
+        <div class="content-wrapper">
+
+
+            <!-- PAGE HEADER (and active client name indicator on the right) -->
+            <div class="content-header">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Management Dashboard</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <h5 id="active-client-name-breadcrumb" class="float-right"></h5>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- MAIN CONTENT -->
+            <div class="content">
+                <div class="container">
+
+                    <div class="callout shadow">
+                        <p>Bijgewerkt tot:
+                            <span style="margin-left: 5px" id="last-refresh-date"></span>
+                            <span style="margin-left: 5px" id="last-refresh-time"></span>
+                        </p>
+                    </div>
+
+
+                    <!-- TOP 10 TABLES-->
+                    <div class="card card-primary shadow">
+                        <div class="card-header">
+                            <h3 class="card-title">Top 10</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <section class="content">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <!-- CONSUMER BALANCE TOP TEN TABLE-->
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Hoogste saldo Consument</h3>
+
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body table-responsive p-0" style="height: 225px;">
+                                                    <table class="table table-sm table-head-fixed text-nowrap tr3">
+                                                        <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Naam</th>
+                                                            <th>Saldo</th>
+                                                            <th>IBAN</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="balance-top-ten-consumer-table-body">
+                                                        <!-- DTO data is added here as table row elements! -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /.card-body -->
+                                            </div>
+                                            <!-- /.card -->
+                                        </div>
+                                        <!-- BUSINESS BALANCE TOP TEN TABLE-->
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Hoogste saldo Zakelijk</h3>
+
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body table-responsive p-0" style="height: 225px;">
+                                                    <table class="table table-sm table-head-fixed text-nowrap tr3">
+                                                        <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Naam</th>
+                                                            <th>Saldo</th>
+                                                            <th>IBAN</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="balance-top-ten-business-table-body">
+                                                        <!-- DTO data is added here as table row elements! -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /.card-body -->
+                                            </div>
+                                            <!-- /.card -->
+                                        </div>
+                                        <!-- NUMBER OF TRANSACTIONS TOP TEN TABLE-->
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3 class="card-title">Grootste aantal transacties</h3>
+
+                                                </div>
+                                                <!-- /.card-header -->
+                                                <div class="card-body table-responsive p-0" style="height: 225px;">
+                                                    <table class="table table-sm table-head-fixed text-nowrap tr3 tr4">
+                                                        <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th>Naam</th>
+                                                            <th>Transacties</th>
+                                                            <th>Klant Id</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="transactions-top-ten-table-body">
+                                                        <!-- DTO data is added here as table row elements! -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <!-- /.card-body -->
+                                            </div>
+                                            <!-- /.card -->
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+                                </div><!-- /.container-fluid -->
+                            </section>
+                            <!-- /.content -->
+                        </div>
+                    </div>
+
+                    <!-- BAR CHART -->
+                    <section class="content">
+                        <div class="card card-primary shadow">
+                            <div class="card-header">
+                                <h3 class="card-title">Gemiddeld saldo van zakelijke bankrekeningen per sector</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="chart">
+                                    <canvas id="barChart"
+                                            style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </section>
+                    <!-- /.card -->
+
+
+                    <section class="content">
+                        <div class="card card-primary shadow">
+                            <div class="card-header">
+                                <h1 class="card-title">Saldo van alle bankrekeningen</h1>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                <table id="data-table1" class="table table-bordered table-striped tr4 tr5">
+
+                                    <thead id="thead">
+                                    <tr>
+                                        <th>Rekeningtype</th>
+                                        <th>Sector</th>
+                                        <th>Klantnaam</th>
+                                        <th>Rekeningnummer</th>
+                                        <th style="text-align: left">Saldo in euro</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody id="dto-table-body">
+                                    <!-- DTO data is added here as table row elements! -->
+                                    </tbody>
+
+                                    <tfoot>
+                                    <tr>
+                                        <th>Rekeningtype</th>
+                                        <th>Sector</th>
+                                        <th>Klantnaam</th>
+                                        <th>Rekeningnummer</th>
+                                        <th>Saldo in euro</th>
+                                    </tr>
+                                    </tfoot>
+
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                    </section>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./wrapper -->
+
+    <!--JAVASCRIPT-->
+
+    <!-- jQuery -->
+    <script src="../../dependencies/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../dependencies/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="../../dependencies/chart.js/Chart.min.js"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="../../dependencies/datatables/jquery.dataTables.min.js"></script>
+    <script src="../../dependencies/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="../../dependencies/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../../dependencies/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="../../dependencies/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../../dependencies/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="../../dependencies/jszip/jszip.min.js"></script>
+    <script src="../../dependencies/pdfmake/pdfmake.min.js"></script>
+    <script src="../../dependencies/pdfmake/vfs_fonts.js"></script>
+    <script src="../../dependencies/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="../../dependencies/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="../../dependencies/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dependencies/adminlte.min.js"></script>
+
+    <script src="../../javascript/managementReportsDashboard.js">
+
+    </script>
+
+</body>
+</html>

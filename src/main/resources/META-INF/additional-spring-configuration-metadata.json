@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "sr.api.uri_prodcuction",
+      "type": "java.lang.String",
+      "description": "The url for the production server."
+    },
+    {
+      "name": "sr.environment",
+      "type": "java.lang.String",
+      "description": "Environment of the application."
+    }
+  ]
+}

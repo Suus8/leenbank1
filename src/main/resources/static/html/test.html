@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testpagina</title>
+    <link href="../css/test.css" rel="stylesheet">
+</head>
+<body>
+<header>Merry X-Mas allemaal!</header>
+
+<h1>DevChat</h1>
+
+<h2>Chat</h2>
+<p>Hieronder kunnen we met elkaar chatten</p>
+
+<p id="robin">Groetjes van Robin</p>
+<p class="ralf">Hey Robin! Hoe is het? Lekker geslapen? Gaan we deze file als chat te gebruiken? :P<br>
+    zie trouwens dat mijn stylesheet alleen werkt in intelliJ, niet in browser. Jelle, hoe kan dit? ;)</p>
+<p class="jelle">
+    Hee Ralf en Robin!
+    Bij mij werkt Ralf's html en css gewoon hoor, in IntelliJ preview en ook in de browser :)
+    Ik heb alleen wel even de link naar de stylesheet verplaatst van de body naar de head.
+</p>
+<p class="suze">Bij mij werkt de css ook, Ralf!</p>
+<p class="jelle">
+    @Robin, ik heb jouw internal css style code block naar de externe css file verplaatst.
+    Beter om deze gescheiden te houden...</p>
+<p class="jelle">Goed bezig, trouwens, @Ralf! Mooie html pagina voor aanmaken nieuwe rekening!</p>
+<p class="ralf">Thnx Jelle! Fijn dat het bij jullie (Suze, Jelle) zichtbaar is. Bij mij alleen via Chrome, dus hopen
+    dat LeenmanBank dat probleem niet heeft.<br>Heb deze pagina ff beetje gepimpt en hieronder tabel gemaakt voor Q&A.
+    Is misschien wat handiger dan via what's app. Had zelf al paar dingen waar ik tegenaan liep...</p>
+
+<h2>Vragen</h2>
+<p>Hieronder kunnen we vragen aan elkaar stellen</p>
+<table>
+    <tr>
+        <th>Vraag</th>
+        <th>Betreffende klasse</th>
+        <th>Antwoorden</th>
+    </tr>
+    <tr>
+        <td class="ralf">Moeten id-tag en name-tag ook in het Engels? Vond NL zelf makkelijker omdat deze dan hetzelfde
+            zijn als de daadwerkelijke tekst op de pagina.
+        </td>
+        <td><a href="openAccount/openAccountCompleteDetails.html">rekeningOpenenGegevensInvullen.html</a></td>
+        <td><div class="">overleggen in team</div></td>
+    </tr>
+    <tr>
+        <td class="ralf">Wat zijn de vereisten voor username en ww? Heb nu username=uniek en ww minimaal 2 chars.
+        </td>
+        <td><a href="openAccount/openAccountCompleteDetails.html">rekeningOpenenGegevensInvullen.html</a></td>
+        <td><div class="">Erik: komt in volgende sprint, rekening mee houden</div></td>
+    </tr>
+    <tr>
+        <td class="ralf">Gaan we Date object gebruiken? Deze zijn namelijk vervangen door Calender object. Dan moeten
+            we UML ook updaten
+        </td>
+        <td>Model classes <a href="/project.demo.model/Person.java">Person</a> and <a href="/project.demo.model/PersonTest.java">TestPerson</a></td>
+        <td><div class="">Erik: nee! Verschillende tijdzones, komt volgende sprint</div></td>
+    </tr>
+    <tr>
+        <td class="ralf">Hoe gaan we bedrijven met zelfde CoC/Personen met zelfde BSN aanvliegen? Zijn in principe uniek,
+            en zou dus in constructor niet mogelijk moeten zijn om dubbele aan te maken. Heb nu wel al check erop
+            ingevoerd + in Unit Test opgenomen, maar willen we ook dat dan meteen de bestaande klant wordt teruggegeven?
+        </td>
+        <td>Model classes <a href="/project.demo.model/Person.java">Person</a> and <a href="/project.demo.model/Company.java">Company</a></td>
+        <td><div class="">Erik: aparte klasse aanmaken voor de checks + hier ook aparte Unit Test voor maken</div></td>
+    </tr>
+    <tr>
+    </tr>
+        <td class="ralf">Wat gaan we als id veld gebruiken voor DB? Username, BSN of CoC zijn allemaal unique, maar
+            kunnen een long id_veld aanmaken (heb ik iig gedaan nu voor AbstractClient)
+        </td>
+        <td><a href="/project.demo.model/AbstractClient.java">AbstractClient.java</a> & <a href="/repositories/AbstractClientRepo.java">AbstractClientRepo.java</a> </td>
+        <td><div class="">Erik: zie vorige, Check.class met ID -> Jan vragen</div><div class="robin">id in abstract,
+            dit is bsn (9 cijfers) of coc (10 cijfers)</div> </td>
+    <tr>
+        <td class="suze">Is er een min of max bedrag dat een transfer moet hebben om het te kunnen gebruiken?
+        </td>
+        <td><a href="/project.demo.model/Transaction.java"> voor transaction class en methode</a>  </td>
+        <td><div class="ralf">min lijkt me 1 cent, max denk t niet gezien t heeeeel toegankelijk moet zijn. maar ff vragen morgen aan erik</div>
+        <div>Erik: min = 0,01, max = 100.000,-</div></td>
+    </tr>
+    <tr>
+        <td class="ralf">Ik heb her en der TODO's staan van zaken waar ik tegenaan loop of die gedaan moeten worden- (nav
+            een wijziging). Gaan we deze in Trello zetten? Kom er net bijv. ook achter dat voor @Entity je attributen
+            geen containers mogen hebben... what to do?
+        </td>
+        <td><a href="/project.demo.model/AbstractClient.java">AbstractClient.java</a></td>
+        <td><div class="">Erik: AbClient apart voor @Entity en dan ook complete versie voor Java. Jan vragen</div>
+        <div class="robin">Many-to-many annotaties? Zie video Jan</div></td>
+    </tr>
+    <!-- blanc row-format-->
+    <tr>
+        <td class="">...
+        </td>
+        <td><a href="">.html</a></td>
+        <td><div class=""></div></td>
+    </tr>
+</table>
+
+</body>
+</html>

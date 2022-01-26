@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welkom bij LeenmanBank!</title>
+    <script rel="script" src="../../javascript/domManipulationMethods.js"></script>
+    <script rel="script" src="../../javascript/regularExpressionChecks.js"></script>
+    <script src="../../javascript/openAccountScript.js" rel="script"></script>
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dependencies/adminlte.min.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link href="../../css/main.css" rel="stylesheet">
+</head>
+
+<body class="hold-transition layout-top-nav" onclose="clearLocalStorageOpenAccount()">
+
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <img src="../../images/cmc_logo.png" alt="CMC Logo" class="brand-image">
+                <span class="brand-text font-weight-bold cmc-blauw">LeenmanBank</span>
+            </a>
+            <!-- Navbar toggler -->
+            <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Right navbar links -->
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- /.navbar -->
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- PAGE HEADER -->
+        <div class="content-header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <h1 class="m-0">Welkom bij LeenmanBank!</h1>
+                        <h2>Registratie geslaagd</h2>
+                        <p>Uw account is met succes aangemaakt en uw rekening is geopend. Welkom bij LeenmanBank!
+                            <br>U ontvangt nog een email ter bevestiging van uw registratie. Hierin staan ook de link om in te loggen op uw
+                            account bij LeenmanBank en alle nodige informatie. Indien van toepassing ontvangt u ook de contactgegevens van uw
+                            eventuele contactpersoon bij ons.
+                            <br>Klik op onderstaande 'Log in'-knop om direct in te loggen op uw account. Op de homepage ziet u meteen een
+                            overzicht van uw rekeningen.
+                            <br>Klik op de 'Sluit'-knop indien u terug wenst te gaan naar de homepage van LeenmanBank.</p>
+
+                        <a href="../login.html"><input type="button" value="Log in"></a> <!--TODO: link to log in page Abuzer-->
+                        <a href="../websiteLeenmanBank.html"><input type="button" value="Sluit"></a>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <h5 id="active-client-name-breadcrumb" class="float-right"></h5>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+
+
+    </div>
+
+
+</div>
+<!-- ./wrapper -->
+<h1></h1>
+
+
+</body>
+</html>

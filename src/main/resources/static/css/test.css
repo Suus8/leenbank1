@@ -1,0 +1,47 @@
+.ralf{
+    font-style: italic;
+    color: blue;
+    font-family: "Comic Sans MS", serif;
+}
+
+.robin {
+    font-size: 20px;
+    color: #00cc00;
+}
+
+#robin {
+    font-size: 20px;
+    color: #00cc00;
+}
+
+.jelle{
+    color: #880505;
+}
+
+.suze{
+    color: #ff9200;
+}
+
+table{
+    border: 2px solid black;
+    max-width: 1300px;
+    text-align: left;
+}
+
+td{
+    border: 1px solid black;
+}
+
+th{
+    border-bottom: 2px solid black;
+
+}
+
+header{
+    text-align: center;
+    color: red;
+    font-size: 72px;
+    font-family: "Lucida Handwriting";
+    height: 250px;
+    background-image: url('../images/kerst.jpg');
+}

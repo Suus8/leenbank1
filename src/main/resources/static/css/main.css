@@ -1,0 +1,154 @@
+/*
+IMPORTANT INFO
+- File location images: ../images/[NAME].jpg
+ */
+
+/*body{*/
+/*    margin: 40px 30px 40px 30px;*/
+/*}*/
+
+/* Hide all content of all tabs */
+.tabContent{
+    display: none;
+}
+
+.cmc-blauw{
+    color: #3579F6;
+    /* #3579F6 */
+}
+
+.cmc-yellow{
+    color: #e3ae04;
+}
+
+/* Change background color of buttons on hover */
+.tabContainer button:hover {
+    background-color: #4d4d50;
+}
+
+/* Create an active/current tabContainer class with different colors*/
+.tabContainer button:focus {
+    background-color: #4d4d50;
+    color: white;
+}
+
+/* Layout of 'pop up' requirements for customized fields */
+.inputRequirements{
+    background-color: lightgoldenrodyellow;
+    border-color: yellow;
+    color: red;
+}
+
+/*used in the singleBankAccountPage page*/
+
+.parent-horizontal-alignment {
+    width: 50%;
+}
+
+.child-horizontal-alignment {
+    float: left;
+    width: 50%;
+}
+
+.button{
+    color: #ffffff;
+    border-radius: 20px;
+    top: 200px;
+    right: 40px;
+    display: inline-block;
+    height: 50px; /*sets height of element*/
+    background: #3579F6; /*sets the background of this element (here a solid colour)*/
+    transition: all 0.6s; /*sets a transition (for hover effect)*/
+    padding-left: 20px; /*sets 'padding'*/
+    padding-right: 20px; /*sets 'padding'*/
+    line-height: 50px; /*for this, it sets vertical alignment*/
+}
+
+.button:hover {
+    background: #c69500; /*sets background colour*/
+}
+#value{
+    color: #0f401b;
+}
+
+.transactionInfo {
+    border: #000000 solid 2px;
+    padding: 10px;
+    background-color: rgba(158, 231, 222, 0.49);
+    margin-top:20px;
+    margin-right:20px;
+    margin-bottom:20px;
+    margin-left:20px;
+
+}
+/*used in the makeATransferPage*/
+
+#transaction_amount_euro {
+    width: 100px;
+    text-align: right;
+}
+#transaction_amount_euro_cents {
+    width: 40px;
+    text-align: right;
+}
+
+/*used in the transferOverview page*/
+.transactionSubmitButton,.transactionCanceledButton{
+    right: 150px;
+    background: #d1d2d7;
+    position: absolute;
+    border-radius: 20px;
+    display: inline-block;
+    transition: all 0.6s; /*sets a transition (for hover effect)*/
+    padding-left: 20px; /*sets 'padding'*/
+    padding-right: 20px; /*sets 'padding'*/
+    line-height: 50px; /*for this, it sets vertical alignment*/
+}
+.TransferContainer{
+    align-items: center;
+    justify-content:space-evenly;
+    display: flex;
+}
+
+.accountMoneyTransferSender,.accountMoneyTransferReceive{
+    border: #000000 solid 2px;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+/*  TABLE ALIGNMENT CLASSES */
+/*
+    Specify which column numbers you want center or right aligned
+    i.e. if you want column 2 & 7 right aligned, and 3 centered, just do:
+    <table class="tr2 tc3 tr7">
+*/
+
+.tl1 td:nth-child(1), .tl1 th:nth-child(1),
+.tl2 td:nth-child(2), .tl2 th:nth-child(2),
+.tl3 td:nth-child(3), .tl3 th:nth-child(3),
+.tl4 td:nth-child(4), .tl4 th:nth-child(4),
+.tl5 td:nth-child(5), .tl5 th:nth-child(5),
+.tl6 td:nth-child(6), .tl6 th:nth-child(6),
+.tl7 td:nth-child(7), .tl7 th:nth-child(7),
+.tl8 td:nth-child(8), .tl8 th:nth-child(8),
+.tl9 td:nth-child(9), .tl9 th:nth-child(9) { text-align:left }
+
+.tr1 td:nth-child(1), .tr1 th:nth-child(1),
+.tr2 td:nth-child(2), .tr2 th:nth-child(2),
+.tr3 td:nth-child(3), .tr3 th:nth-child(3),
+.tr4 td:nth-child(4), .tr4 th:nth-child(4),
+.tr5 td:nth-child(5), .tr5 th:nth-child(5),
+.tr6 td:nth-child(6), .tr6 th:nth-child(6),
+.tr7 td:nth-child(7), .tr7 th:nth-child(7),
+.tr8 td:nth-child(8), .tr8 th:nth-child(8),
+.tr9 td:nth-child(9), .tr9 th:nth-child(9) { text-align:right }
+
+.tc1 td:nth-child(1), .tc1 th:nth-child(1),
+.tc2 td:nth-child(2), .tc2 th:nth-child(2),
+.tc3 td:nth-child(3), .tc3 th:nth-child(3),
+.tc4 td:nth-child(4), .tc4 th:nth-child(4),
+.tc5 td:nth-child(5), .tc5 th:nth-child(5),
+.tc6 td:nth-child(6), .tc6 th:nth-child(6),
+.tc7 td:nth-child(7), .tc7 th:nth-child(7),
+.tc8 td:nth-child(8), .tc8 th:nth-child(8),
+.tc9 td:nth-child(9), .tc9 th:nth-child(9) { text-align:center }

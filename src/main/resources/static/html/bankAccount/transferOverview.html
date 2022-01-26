@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:color="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link href="../../css/main.css" rel="stylesheet">
+    <script src="../../javascript/Account/transferOverview.js" rel="script"></script>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../dependencies/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../dependencies/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dependencies/adminlte.min.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <script rel="script" src="../../javascript/domManipulationMethods.js"></script>
+    <title>Transactie overzicht - LeenmanBank</title>
+</head>
+<body class="hold-transition layout-top-nav">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+            <div class="container">
+                <a href="#" class="navbar-brand">
+                    <img src="../../images/cmc_logo.png" alt="CMC Logo" class="brand-image">
+                    <span class="brand-text font-weight-bold cmc-blauw">LeenmanBank</span>
+                </a>
+                <!-- Navbar toggler -->
+                <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
+                        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="../dashboard/dashboardClient.html" class="nav-link">Rekeningoverzicht</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Right navbar links -->
+                <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                    <li class="nav-item">
+                        <a href="../../html/login.html" class="nav-link">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+            <!-- PAGE HEADER (and active client name indicator on the right) -->
+            <div class="content-header">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Transactie overzicht</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <h5 id="active-client-name-breadcrumb" class="float-right"></h5>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- MAIN CONTENT -->
+            <div class="content">
+                <div class="container">
+
+                    <!-- TRANSACTION OVERVIEW -->
+                    <div class="card card-primary shadow">
+                        <div class="card-header">
+                            <h3 class="card-title"></h3>
+                        </div>
+
+                        <div class="card-body">
+                            <section class="content">
+                                <div class="container-fluid">
+
+                                    <!-- Default box -->
+                                    <div class="card-body pb-0">
+                                        <div class="row">
+
+                                            <!-- SENDER DETAILS -->
+                                            <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch flex-column">
+                                                <div class="card bg-light d-flex flex-fill">
+                                                    <div class="card-header text-muted border-bottom-0">
+                                                        <h6>Van :</h6>
+                                                    </div>
+                                                    <div class="card-body pt-0">
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                <h2 class="lead text-bold" id="senderFullName">
+                                                                    Van persoon naam</h2>
+                                                            </div>
+                                                            <div class="col-5 text-center">
+                                                                <img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" id="senderAvatar"
+                                                                     alt="user-avatar" class="img-circle img-fluid">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <div class="text-left">
+                                                            <h5 class="pt-0">
+                                                               <span style="color: darkred;">
+                                                                   <i class="fas fa-lg fa-credit-card "
+                                                                      style="margin-right:5px;"></i>
+                                                               </span>
+                                                                <span id="senderIBAN">IBAN van rekening</span></h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- RECEIVER DETAILS -->
+                                            <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch flex-column">
+                                                <div class="card bg-light d-flex flex-fill">
+                                                    <div class="card-header text-muted border-bottom-0">
+                                                        <h6>Naar :</h6>
+                                                    </div>
+                                                    <div class="card-body pt-0">
+                                                        <div class="row">
+                                                            <div class="col-7">
+                                                                <h2 class="lead text-bold" id="receiverFullName">Naar
+                                                                    persoon naam</h2>
+                                                            </div>
+                                                            <div class="col-5 text-center">
+                                                                <img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" id="receiverAvatar"
+                                                                     alt="user-avatar" class="img-circle img-fluid">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <div class="text-left">
+                                                            <h5 class="pt-0">
+                                                               <span style="color: darkgreen;">
+                                                                   <i class="fas fa-lg fa-credit-card "
+                                                                      style="margin-right:5px;"></i>
+                                                               </span>
+                                                                <span id="receiverIBAN">IBAN naar rekening</span></h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- AMOUNT -->
+                                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex align-items-stretch flex-column align-self-lg-center">
+                                                <!-- small box -->
+                                                <div class="small-box bg-success">
+                                                    <div class="inner">
+                                                        <p>Bedrag</p>
+                                                        <h3 id="amountTransferred">{bedrag}</h3>
+                                                    </div>
+                                                    <div class="icon">
+                                                        <i class="fas fa-lg fa-piggy-bank"></i>
+                                                    </div>
+                                                    <!-- CONFIRM BUTTON-->
+                                                    <form action="singleBankAccountPage.html">
+                                                        <input class="btn btn-block bg-gradient-success btn-lg shadow-sm"
+                                                               type="submit" onclick="storeInfo()" value="Verstuur"/>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- CANCEL TRANSACTION BUTTON -->
+                                        <div class="row">
+                                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 flex-row justify-content-end">
+                                                <form action="singleBankAccountPage.html">
+                                                    <input class="btn btn-block bg-gradient-danger btn-lg shadow-sm"
+                                                           type="submit" value="Annuleren"/>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.card-body -->
+
+                                </div>
+                                <!-- /.card -->
+
+
+                            </section>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ./wrapper -->
+
+    <!--JAVASCRIPT-->
+    <!-- jQuery -->
+    <script src="../../dependencies/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../../dependencies/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../dependencies/adminlte.min.js"></script>
+    <script defer src="../../javascript/Account/bankAccountOverall.js"></script>
+</body>
+<script defer src="../../javascript/Account/bankAccountOverall.js"></script>
+</html>
