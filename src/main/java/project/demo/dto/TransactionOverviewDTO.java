@@ -1,14 +1,13 @@
 package project.demo.dto;
 
 import java.util.Comparator;
-import java.util.Objects;
 
 public class TransactionOverviewDTO {
     String offsetAccountHolder;
     String offsetAccountIban;
     String description;
     String date;
-    String amountInCents;
+    long amountInCents;
     boolean received;
     long id;
 
@@ -17,8 +16,7 @@ public class TransactionOverviewDTO {
         this.offsetAccountIban = offsetAccountIban;
         this.description = description;
         this.date = date;
-        if (amountInCents<100) this.amountInCents = "0"+amountInCents;
-        else this.amountInCents = ""+amountInCents;
+        this.amountInCents = amountInCents;
         this.received = received;
         this.id = id;
     }
@@ -39,7 +37,7 @@ public class TransactionOverviewDTO {
         return date;
     }
 
-    public String getAmountInCents() {
+    public long getAmountInCents() {
         return amountInCents;
     }
 
@@ -51,7 +49,12 @@ public class TransactionOverviewDTO {
         return id;
     }
 
-    public static class DateComparator implements Comparator<TransactionOverviewDTO>{
+    public static DateComparator getDateComparator(){
+        return new DateComparator();
+    }
+
+    private static class DateComparator implements Comparator<TransactionOverviewDTO>{
+
         @Override
         public int compare(TransactionOverviewDTO t1, TransactionOverviewDTO t2) {
             if (t2.getDate().compareTo(t1.getDate())!=0) return t2.getDate().compareTo(t1.getDate());

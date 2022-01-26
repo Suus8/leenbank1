@@ -57,7 +57,7 @@ public class TransactionService {
             if (t.getAccountReciever().getAccountIBAN().equals(iban) || t.getAccountSender().getAccountIBAN().equals(iban))
                 transactionsForAccount.add(makeDTOfromTransaction(t, iban));
         }
-        transactionsForAccount.sort(new TransactionOverviewDTO.DateComparator());
+        transactionsForAccount.sort(TransactionOverviewDTO.getDateComparator());
         return transactionsForAccount;
     }
 
@@ -92,8 +92,7 @@ public class TransactionService {
     private void verifyDataPayment() {
         if (paymentData.getPin() >= 0) {
             verifyPinCode();
-            if (statuscode == TransActionStatusCode.CODE_PIN_NOT_CORRECT)
-                return;
+            if (statuscode == TransActionStatusCode.CODE_PIN_NOT_CORRECT) return;
         }
         if (accountReceiver == null)
             statuscode = TransActionStatusCode.CODE_IBAN_RECEIVER_NOT_FOUND;
@@ -101,13 +100,14 @@ public class TransactionService {
             statuscode = TransActionStatusCode.CODE_IBAN_SENDER_NOT_FOUND;
         else if (accountSender.getBalanceInCents() < paymentData.getAmountInCents())
             statuscode = TransActionStatusCode.CODE_BALANCE_NOT_SUFFICIENT;
+        else if (paymentData.getAmountInCents()<=0)
+            statuscode = TransActionStatusCode.CODE_AMOUNT_NOT_ZERO_OR_LESS;
         else
             statuscode = TransActionStatusCode.CODE_TRANSACTION_PROCESSED;
     }
 
     private void verifyPinCode() {
-        if (accountSender != null) {
-            if (accountSender.getPincode() != paymentData.getPin())
+        if (accountSender != null && accountSender.getPincode() != paymentData.getPin()) {
                 statuscode = TransActionStatusCode.CODE_PIN_NOT_CORRECT;
         }
     }
@@ -143,6 +143,4 @@ public class TransactionService {
         }
         return null;
     }
-
-
 }

@@ -7,6 +7,7 @@ public final class TransActionStatusCode {
     public static final int CODE_PIN_NOT_CORRECT = 902;
     public static final int CODE_BALANCE_NOT_SUFFICIENT = 903;
     public static final int CODE_IBAN_RECEIVER_NOT_FOUND = 904;
+    public static final int CODE_AMOUNT_NOT_ZERO_OR_LESS = 905;
 
     private TransActionStatusCode() {
     }
@@ -23,6 +24,8 @@ public final class TransActionStatusCode {
                 return "Balance is not sufficient";
             case 904:
                 return "Iban receiver not found";
+            case 905:
+                return "amount may not be 0 or lower";
             default:
                 return "Code does not exist";
         }

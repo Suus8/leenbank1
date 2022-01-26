@@ -2,7 +2,7 @@ const authContainer = document.querySelector("#accountAuthorized")
 const ownContainer = document.querySelector("#accountOwned")
 
 
-document.onreadystatechange = function (e) {
+document.onreadystatechange = function () {
     let user = JSON.parse(localStorage.getItem(`user`))
     let clientId = user["id"]
     let clientFullName = user["name"]
@@ -26,7 +26,6 @@ function getAllAccounts() {
 }
 
 async function getAccounts(url, container) {
-    console.log(container)
     let authorizedAccountData
 
     let requestOptions = {
@@ -38,18 +37,13 @@ async function getAccounts(url, container) {
 
     fetch(`http://localhost:8888/${url}?id=${id}`, requestOptions)
         .then(response => response.json())
-        .then(result => {
-            console.log("fetch => ", result)
-        })
         .catch(error => console.log('error', error));
 
 
     const response = await fetch(`http://localhost:8888/${url}?id=${id}`, requestOptions)
 
     authorizedAccountData = await response.json();
-
-    console.table(authorizedAccountData)
-
+    
     authorizedAccountData.forEach((obj) => {
 
         const div = document.createElement("div")
@@ -80,7 +74,7 @@ async function getAccounts(url, container) {
         p_account_type.innerText = obj["accountType"]
         div.appendChild(p_account_type)
 
-        const a1 = createHyperlink(iban, `/html/bankAccount/singleBankAccountPage.html`, 'naar je account')
+        const a1 = createHyperlink(iban, `/html/bankAccount/transactionOverviewAccount.html`, 'naar je account')
         div.appendChild(a1)
 
         if (p_account_Owner.innerText === retrieveObjectFromLocalStorage('user').name) {
