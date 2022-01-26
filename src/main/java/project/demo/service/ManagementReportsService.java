@@ -24,7 +24,7 @@ public class ManagementReportsService {
     IClientNumberOfTransactionsRepo clientNumberOfTransactionRepo;
 
     @Autowired
-    AccountDTOService accountDTOService;
+    ClientAccountService clientAccountService;
 
     @Autowired
     IAccountRepo accountRepo;
@@ -53,7 +53,7 @@ public class ManagementReportsService {
         List<AccountDTO> balanceTopTen = new ArrayList<>();
         List<Account> topTenAccounts = accountRepo.getBalanceTopTenAccounts(accountType);
         for (Account account : topTenAccounts)
-            accountDTOService.generateAccountDTOs(balanceTopTen, account);
+            clientAccountService.generateAccountDTOs(balanceTopTen, account);
         return balanceTopTen;
     }
 

@@ -53,7 +53,7 @@
             <!-- Right navbar links -->
             <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                 <li class="nav-item">
-                    <a href="../login.html" class="nav-link">Login</a>
+                    <a href="login.html" class="nav-link">Login</a>
                 </li>
             </ul>
         </div>
@@ -85,7 +85,7 @@
         <div class="content">
             <div class="container">
 
-                <!-- STEP 1 CHOOSE ACCOUNT TYPE -->
+                <!-- CHOOSE ACCOUNT TYPE -->
                 <div class="card card-primary shadow" id="typeOfAccountCard">
                     <div class="card-header">
                         <h3 class="card-title">Stap 1) Type rekening</h3>
@@ -121,32 +121,31 @@
                                 <!-- dropdown sectors -->
                                 <div id="sectorContainer" style="display: none">
                                     <select id="sectorDropdownOptions">
-                                        <option name="sector" value="Zakelijke dienstverlening">Zakelijke
-                                            dienstverlening
+                                        <option name="sector" value="BUSINESS_SERVICES">Zakelijke dienstverlening
                                         </option>
-                                        <option name="sector" value="Bouw">Bouw</option>
-                                        <option name="sector" value="Gezondheid">Gezondheid</option>
-                                        <option name="sector" value="Detailhandel">Detailhandel</option>
-                                        <option name="sector" value="Cultuur, Sport & Recreatie">Cultuur, Sport &
+                                        <option name="sector" value="CONSTRUCTION">Bouw</option>
+                                        <option name="sector" value="HEALTHCARE">Gezondheid</option>
+                                        <option name="sector" value="RETAIL">Detailhandel</option>
+                                        <option name="sector" value="CULTURE_SPORTS_RECREATION">Cultuur, Sport &
                                             Recreatie
                                         </option>
-                                        <option name="sector" value="ICT & Media">ICT & Media</option>
-                                        <option name="sector" value="Groothandel">Groothandel</option>
-                                        <option name="sector" value="Land- & Tuinbouw">Land- & Tuinbouw
+                                        <option name="sector" value="ICT_AND_MEDIA">ICT & Media</option>
+                                        <option name="sector" value="WHOLESALE">Groothandel</option>
+                                        <option name="sector" value="AGRICULTURE_HORTICULTURE">Land- & Tuinbouw
                                         </option>
-                                        <option name="sector" value="Industrie">Industrie</option>
-                                        <option name="sector" value="Logistiek">Logistiek</option>
-                                        <option name="sector" value="Horeca">Horeca</option>
-                                        <option name="sector" value="Financiële Instellingen">Financiële Instellingen
+                                        <option name="sector" value="INDUSTRIAL">Industrie</option>
+                                        <option name="sector" value="LOGISTICS">Logistiek</option>
+                                        <option name="sector" value="HOSPITALITY">Horeca</option>
+                                        <option name="sector" value="FINANCE">Financiële Instellingen</option>
+                                        <option name="sector" value="ENERGY_WATER_ENVIRONMENT">Energie, Water &
+                                            Milieu
                                         </option>
-                                        <option name="sector" value="Energie, Water & Milieu">Energie, Water & Milieu
-                                        </option>
-                                        <option name="sector" value="Overige">Overige</option>
+                                        <option name="sector" value="OTHER">Overige</option>
                                     </select>
                                     <br>
                                 </div>
                                 <!--End of Step 1, button click triggers visibility of next step + saves accounttype locally-->
-                                <button onclick="saveAccountTypeAndShowStep2()">Volgende</button>
+                                <button onclick="saveAccountType()">Volgende</button>
                             </div>
                             <!-- /.row -->
                         </section>
@@ -154,10 +153,11 @@
                     <!-- /.content -->
                 </div>
 
-                <!-- STEP 2 FILL IN DETAILS -->
-                <div class="card card-primary shadow" id="fillInDetailsCard" style="display: none">
+                <!-- FILL IN DETAILS -->
+                <div class="card card-primary shadow" id="fillInDetailsCard" style="display: block">
+                    <!--TODO set to none-->
                     <div class="card-header">
-                        <h3 class="card-title">Stap 2) Uw gegevens</h3>
+                        <h3 class="card-title">Gegevens</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"
                                     style="background-color: deepskyblue">
@@ -172,11 +172,15 @@
                                 Tabs for each part of step 2 of the registration
                                 -->
                                 <div class="tabContainer">
-                                    <button id="accountDetailsTab" class="tab tabPosition">Account gegevens</button>
-                                    <button id="personalDetailsTab" class="tab tabPosition">Persoonlijke gegevens
+                                    <button class="tabsItself" id="accountDetailsTab">Account gegevens
                                     </button>
-                                    <button id="companyDetailsTab" class="tab tabPosition">Bedrijfsgegevens</button>
-                                    <button id="contactDetailsTab" class="tab">Contact gegevens</button>
+                                    <button class="tabsItself" id="personalDetailsTab">Persoonlijke
+                                        gegevens
+                                    </button>
+                                    <button class="tabsItself" id="companyDetailsTab">Bedrijfsgegevens
+                                    </button>
+                                    <button class="tabsItself" id="contactDetailsTab">Contact gegevens
+                                    </button>
                                 </div>
 
                                 <!--
@@ -191,11 +195,11 @@
                                     <table>
                                         <!-- Username fields/row-->
                                         <tr>
-                                            <td><label for="usernameInput">Gebruikersnaam</label></td>
-                                            <td><input type="text" id="usernameInput" name="username"
+                                            <td><label for="username">Gebruikersnaam</label></td>
+                                            <td><input type="text" id="username" name="username"
                                                        onfocus="showElement('usernameRequirements')"
                                                        onblur="hideElement('usernameRequirements')"
-                                                       onkeyup="updateOnInputCheckUsername('usernameInput')"
+                                                       onkeyup="updateUsernameCheckOnInput('username')"
                                                        minlength="3" required></td>
                                             <td>
                                                 <ul id="usernameRequirements" class="inputRequirements"
@@ -203,19 +207,20 @@
                                                     <li id="userReqUnique">Unieke gebruikersnaam binnen onze bank</li>
                                                     <li id="userReq3Chars">Minimaal 3 tekens</li>
                                                     <li id="userReqOnlyNumbersAndLetters">Alleen letters, cijfers,
-                                                        underscore en koppelteken zijn toegestaan
+                                                        underscore en koppelteken zijn
+                                                        toegestaan
                                                     </li>
                                                 </ul>
                                             </td>
                                         </tr>
                                         <!--Password fields/row-->
                                         <tr>
-                                            <td><label for="passwordInput">Wachtwoord</label></td>
+                                            <td><label for="password">Wachtwoord</label></td>
                                             <!--type="password" means it's not visible when typed in-->
-                                            <td><input type="password" id="passwordInput" name="password"
+                                            <td><input type="password" id="password" name="password"
                                                        onfocus="showElement('passwordRequirements')"
                                                        onblur="hideElement('passwordRequirements')"
-                                                       onkeyup="updateOnInputCheckPassword('passwordInput')"
+                                                       onkeyup="updatePasswordCheckOnInput('password')"
                                                        minlength="8" required></td>
                                             <td>
                                                 <ul id="passwordRequirements" class="inputRequirements"
@@ -230,11 +235,11 @@
                                         </tr>
                                         <!--Repeat password fields/row-->
                                         <tr>
-                                            <td><label for="repeatPasswordInput">Herhaal wachtwoord</label></td>
-                                            <td><input type="password" id="repeatPasswordInput" name="repeatPassword"
+                                            <td><label for="repeatPassword">Herhaal wachtwoord</label></td>
+                                            <td><input type="password" id="repeatPassword" name="repeatPassword"
                                                        onfocus="showElement('repeatPwRequirements')"
                                                        onblur="hideElement('repeatPwRequirements')"
-                                                       onkeyup="updateOnInputCheckRepeatPassword('passwordInput','repeatPasswordInput')"
+                                                       onkeyup="updateRepeatPasswordCheckOnInput('password','repeatPassword')"
                                                        required></td>
                                             <td>
                                                 <ul id="repeatPwRequirements" class="inputRequirements"
@@ -247,7 +252,7 @@
 
                                     <!-- Buttons to next/previous tab-->
                                     <button id="nextButtonConsumerOrCompany"
-                                            onclick="checkLoginInDetailsAndShowNextTab('usernameInput','passwordInput','repeatPasswordInput')">
+                                            onclick="checkAccountDetails()">
                                         Volgende
                                     </button>
                                 </div>
@@ -263,12 +268,11 @@
 
                                         <!--TableRows: user fills in the right column-->
                                         <tr>
-                                            <td><label for="ssnInput">BSN</label></td>
-                                            <td><input type="text" id="ssnInput" name="ssn"
+                                            <td><label for="ssn">BSN</label></td>
+                                            <td><input type="text" id="ssn" name="ssn"
                                                        onfocus="showElement('ssnRequirements')"
                                                        onblur="hideElement('ssnRequirements')"
-                                                       onkeyup="updateOnInputCheckSsn('ssnInput')" min="0" required>
-                                            </td>
+                                                       onkeyup="updateSsnCheckOnInput('ssn')" min="0" required></td>
                                             <td>
                                                 <ul id="ssnRequirements" class="inputRequirements"
                                                     style="display: none">
@@ -280,25 +284,24 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><label for="firstNameInput">Voornaam</label></td>
-                                            <td><input type="text" id="firstNameInput" required></td>
+                                            <td><label for="firstName">Voornaam</label></td>
+                                            <td><input type="text" id="firstName" required></td>
                                         </tr>
                                         <tr>
-                                            <td><label for="lastNameInput">Achternaam (en tussenvoegsels)</label></td>
-                                            <td><input type="text" id="lastNameInput" required></td>
+                                            <td><label for="lastName">Achternaam (en tussenvoegsels)</label></td>
+                                            <td><input type="text" id="lastName" required></td>
                                         </tr>
                                         <tr>
-                                            <td><label for="dateOfBirthInput">Geboortedatum</label></td>
-                                            <td><input type="date" id="dateOfBirthInput" name="setTodaysDate" required>
-                                            </td>
+                                            <td><label for="dateOfBirth">Geboortedatum</label></td>
+                                            <td><input type="date" id="dateOfBirth" name="setTodaysDate" required></td>
                                         </tr>
                                     </table>
 
-                                    <!-- Buttons to next/previous tab -->
-                                    <button onclick="showPreviousTab('personalDetailsTab','accountDetails')">
+                                    <!-- Buttons to next/previous tab TODO Add check-->
+                                    <button onclick="showPreviousTab('personalDetailsTab','accountDetailsTab','accountDetails')">
                                         Vorige
                                     </button>
-                                    <button onclick="checkIdAndShowContactDetailsTab('ssnInput',9)">Volgende</button>
+                                    <button onclick="checkIdBeforeNextTab()">Volgende</button>
                                 </div>
 
                                 <!--
@@ -310,12 +313,11 @@
                                     <table>
                                         <!--TableRows: user fills in the right column-->
                                         <tr>
-                                            <td><label for="coCInput">KvK-nummer</label></td>
-                                            <td><input type="number" id="coCInput" name="coC"
+                                            <td><label for="coC">KvK-nummer</label></td>
+                                            <td><input type="number" id="coC" name="coC"
                                                        onfocus="showElement('coCRequirements')"
                                                        onblur="hideElement('coCRequirements')"
-                                                       onkeyup="updateOnInputCheckCoC('coCInput')" min="0" required>
-                                            </td>
+                                                       onkeyup="updateCoCCheckOnInput('coC')" min="0" required></td>
                                             <td>
                                                 <ul id="coCRequirements" class="inputRequirements"
                                                     style="display: none">
@@ -327,17 +329,18 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><label for="companyNameInput">Bedrijfsnaam</label></td>
-                                            <td><input type="text" id="companyNameInput" name="companyName" required>
-                                            </td>
+                                            <td><label for="companyName">Bedrijfsnaam</label></td>
+                                            <td><input type="text" id="companyName" name="companyName" required></td>
                                         </tr>
                                     </table>
 
                                     <!-- Buttons to next/previous tab-->
-                                    <button onclick="showPreviousTab('personalDetailsTab','accountDetails')">
+                                    <button onclick="showPreviousTab('companyDetailsTab','accountDetailsTab','accountDetails')">
                                         Vorige
                                     </button>
-                                    <button onclick="checkIdAndShowContactDetailsTab('coCInput',8)">Volgende</button>
+                                    <button onclick="showNextTab('companyDetailsTab','contactDetailsTab','contactDetails')">
+                                        Volgende
+                                    </button>
                                 </div>
 
                                 <!--
@@ -346,52 +349,54 @@
                                 <div id="contactDetails" class="tabContent" style="display: none">
                                     <h2>Contact gegevens</h2>
                                     <p>Vul hieronder uw contact gegevens in. Deze worden gebruikt ter verificatie van uw
-                                        rekening evenals voor (elektronische) communicatie. Het is verplicht om minimaal
-                                        een telefoon nummer òf uw e-mailadres òf uw adres in te vullen.</p>
+                                        rekening evenals voor
+                                        (elektronische) communicatie.</p>
                                     <table>
                                         <tr>
-                                            <td><label for="emailInput">Email</label></td>
-                                            <td><input type="text" id="emailInput" required></td>
+                                            <td><label for="email">Email</label></td>
+                                            <td><input type="text" id="email" required></td>
                                         </tr>
                                         <tr>
-                                            <td><label for="telephoneNumberInput">Telefoonnummer</label></td>
-                                            <td><input type="text" id="telephoneNumberInput" required></td>
+                                            <td><label for="telephoneNumber">Telefoonnummer</label></td>
+                                            <td><input type="text" id="telephoneNumber" required></td>
                                         </tr>
                                         <tr>
-                                            <td><label for="streetInput">Straatnaam</label></td>
-                                            <td><input type="text" id="streetInput" required></td>
+                                            <td><label for="street">Straatnaam</label></td>
+                                            <td><input type="text" id="street" required></td>
                                         </tr>
                                         <tr>
-                                            <td><label for="houseNumberInput">Huisnummer</label></td>
-                                            <td><input type="number" id="houseNumberInput" min="0" required></td>
+                                            <td><label for="houseNumber">Huisnummer</label></td>
+                                            <td><input type="number" id="houseNumber" min="0" required></td>
                                         </tr>
                                         <tr>
-                                            <td><label for="houseNumberAdditionInput">Toevoeging</label></td>
-                                            <td><input type="text" id="houseNumberAdditionInput"></td>
+                                            <td><label for="houseNumberAddition">Toevoeging</label></td>
+                                            <td><input type="text" id="houseNumberAddition"></td>
                                         </tr>
                                         <tr>
-                                            <td><label for="zipCodeInput">Postcode</label></td>
-                                            <td><input type="text" id="zipCodeInput" required></td>
+                                            <td><label for="zipCode">Postcode</label></td>
+                                            <td><input type="text" id="zipCode" required></td>
                                         </tr>
                                         <tr>
-                                            <td><label for="cityInput">Stad</label></td>
-                                            <td><input type="text" id="cityInput" required></td>
+                                            <td><label for="city">Stad</label></td>
+                                            <td><input type="text" id="city" required></td>
                                         </tr>
                                     </table>
-                                    <p id="errorMessage" class="inputRequirements" style="display: none">We hebben minimaal uw email,
-                                        telefoonnummer of adres nodig.</p>
 
                                     <!-- Buttons to next/previous tab-->
                                     <button id="previousButtonConsumerAccount"
-                                            onclick="showPreviousTab('contactDetailsTab','personalDetails')">
+                                            onclick="showPreviousTab('contactDetailsTab','personalDetailsTab','personalDetails')">
                                         Vorige
                                     </button>
                                     <button id="previousButtonSmallBusinessAccount"
-                                            onclick="showPreviousTab('contactDetailsTab','companyDetails')">
+                                            onclick="showPreviousTab('contactDetailsTab','companyDetailsTab','companyDetails')">
                                         Vorige
                                     </button>
-                                    <button onclick="checkContactDetailsAndShowStep3()">Controleer gegevens</button>
+                                    <button onclick="checkAllDetailsComplete()">Controleer gegevens</button>
                                 </div>
+
+                                <!--End of Step 2, button click goes to next page-->
+                                <button id="saveButton" style="display: none"><a href="openAccountCheckDetails.html">Volgende</a>
+                                </button>
                             </div>
                             <!-- /.row -->
                         </section>
@@ -399,10 +404,11 @@
                     <!-- /.content -->
                 </div>
 
-                <!-- STEP 3 CHECK DETAILS -->
-                <div class="card card-primary shadow" id="checkDetailsCard" style="display: none">
+                <!-- CHECK DETAILS -->
+                <div class="card card-primary shadow" id="checkInDetailsCard" style="display: block">
+                    <!--TODO set to none-->
                     <div class="card-header">
-                        <h3 class="card-title">Stap 3) Controleer</h3>
+                        <h3 class="card-title">Gegevens</h3>
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse"
                                     style="background-color: deepskyblue">
@@ -428,7 +434,7 @@
                                     </tr>
                                 </table>
 
-                                <div id="consumer" style="display: none">
+                                <div id="consumer">
                                     <h2>Persoonlijke gegevens</h2>
                                     <table>
                                         <tr>
@@ -450,7 +456,7 @@
                                     </table>
                                 </div>
 
-                                <div id="smallBusiness" style="display: none">
+                                <div id="smallBusiness">
                                     <h2>Bedrijfsgegevens</h2>
                                     <table>
                                         <tr>
@@ -500,8 +506,9 @@
                                     </tr>
                                 </table>
 
-                                <button onclick="changeFilledInDetails()">Wijzig</button>
-                                <button id="createAccountButton" onclick="saveAccount()">Open account</button>
+                                <button><a href="openAccountCompleteDetails.html">Wijzig</a></button>
+                                <button id="createAccountButton" onclick="createAccount()"><a
+                                        href="openAccountSucceeded.html">Volgende</a></button>
                             </div>
                             <!-- /.row -->
                         </section>

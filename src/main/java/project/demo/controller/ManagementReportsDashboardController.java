@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import project.demo.dto.AccountDTO;
 import project.demo.model.ClientNumberOfTransactions;
-import project.demo.service.AccountDTOService;
+import project.demo.service.ClientAccountService;
 import project.demo.service.ManagementReportsService;
 
 import java.util.List;
@@ -14,14 +14,15 @@ import java.util.List;
 public class ManagementReportsDashboardController {
 
     @Autowired
-    AccountDTOService accountDTOService;
+    ClientAccountService clientAccountService;
 
     @Autowired
     ManagementReportsService managementReportsService;
 
     @RequestMapping(value = "/allAccounts", method = RequestMethod.GET)
     public List<AccountDTO> getAllAccountsDetails() {
-        return accountDTOService.getAllAccountDTOs();
+        clientAccountService.loadAllAccountDTOs();
+        return clientAccountService.getAllAccountDTOs();
     }
 
     @RequestMapping(value = "/averageBalancePerSector", method = RequestMethod.GET)

@@ -1,26 +1,27 @@
 window.onload = function () {
-    getSelectedAccountInfo("iban", "name", "balance")
+    loadSelectedAccountInfo("iban", "name", "balance")
     loadTransactions()
 }
 
 const transactionsCurrentAccountEndpoint = `http://localhost:8888/transactionForIban?iban=${localStorage.getItem("SelectedIban")}`
 const transactionTableBody = document.querySelector("#transaction-dto-table-body")
+const accountInfoForIbanEndpoint = `http://localhost:8888/getAccountByIBAN?iban=${localStorage.getItem("SelectedIban")}`
 
-async function fetchData(URL) {
-    let requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    };
-    const response = await fetch(URL, requestOptions)
-    return await response.json()
+
+async function loadSelectedAccountInfo(ibanId, nameId, balanceId) {
+    let data = fetchData(accountInfoForIbanEndpoint,'GET')
+        .then(data => {
+            document.getElementById(ibanId).innerHTML = data["accountIBAN"]
+            document.getElementById(nameId).innerHTML = data["clientName"]
+            document.getElementById(balanceId).innerHTML = convertAmountInCentsToReadableString(data["accountBalanceInCents"])
+        })
+        .catch(error => console.log('error', error));
 }
 
 async function loadTransactions() {
-    let data = await fetchData(transactionsCurrentAccountEndpoint)
+    let data = await fetchData(transactionsCurrentAccountEndpoint,'GET')
 
     data.forEach(obj => {
-        console.log(obj.toString())
-
         const tr = document.createElement("tr")
 
         const accountHolder = document.createElement("td")
@@ -37,10 +38,10 @@ async function loadTransactions() {
         date.innerText = convertRawDateToDDMMYYYY(rawDate)
 
         const amount = document.createElement("td")
-        const rawAmount =  obj["amountInCents"]
+        const rawAmount = obj["amountInCents"]
         const receivedBoolean = obj["received"]
         amount.innerText = convertRawAmount(rawAmount, receivedBoolean)
-        if(receivedBoolean===true) amount.style.color = "green"
+        if (receivedBoolean === true) amount.style.color = "green"
         else amount.style.color = "red"
 
         tr.appendChild(accountHolder)
@@ -52,15 +53,15 @@ async function loadTransactions() {
         transactionTableBody.appendChild(tr)
     })
 
-    function convertRawDateToDDMMYYYY(rawDate){
+    function convertRawDateToDDMMYYYY(rawDate) {
         let tokens = rawDate.split("-")
-        return tokens[2]+"-"+tokens[1]+"-"+tokens[0]
+        return tokens[2] + "-" + tokens[1] + "-" + tokens[0]
     }
 
-    function convertRawAmount(rawAmount, receivedBoolean){
+    function convertRawAmount(rawAmount, receivedBoolean) {
         let amount
-        if(receivedBoolean===true) amount = "+"
-        else amount = "-"
-        return amount + " € " + rawAmount.slice(0, -2) + "," + rawAmount.slice(-2)
+        if (receivedBoolean === true) amount = "+ "
+        else amount = "- "
+        return amount + convertAmountInCentsToReadableString(rawAmount)
     }
 }

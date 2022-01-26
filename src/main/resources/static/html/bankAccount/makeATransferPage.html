@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Transactie maken - LeenmanBank</title>
     <meta charset="UTF-8">
     <link href="../../css/main.css" rel="stylesheet">
     <script src="../../javascript/Account/makeATransferPage.js" rel="script"></script>
@@ -19,212 +18,199 @@
     <script rel="script" src="../../javascript/domManipulationMethods.js"></script>
 </head>
 <body class="hold-transition layout-top-nav">
-    <div class="wrapper">
+<div class="wrapper">
 
-        <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
-            <div class="container">
-                <a href="#" class="navbar-brand">
-                    <img src="../../images/cmc_logo.png" alt="CMC Logo" class="brand-image">
-                    <span class="brand-text font-weight-bold cmc-blauw">LeenmanBank</span>
-                </a>
-                <!-- Navbar toggler -->
-                <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
-                        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
-                    <!-- Left navbar links -->
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a href="../dashboard/dashboardClient.html" class="nav-link">Rekening overzicht</a>
-                        </li>
-                    </ul>
-                </div>
-                <!-- Right navbar links -->
-                <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <img src="../../images/cmc_logo.png" alt="CMC Logo" class="brand-image">
+                <span class="brand-text font-weight-bold cmc-blauw">LeenmanBank</span>
+            </a>
+            <!-- Navbar toggler -->
+            <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="../../html/login.html" class="nav-link">Login</a>
+                        <a href="#" class="nav-link">Transactie maken</a>
                     </li>
                 </ul>
             </div>
-        </nav>
-        <!-- /.navbar -->
+            <!-- Right navbar links -->
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                <li class="nav-item">
+                    <a href="../../html/login.html" class="nav-link">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- /.navbar -->
 
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
 
-            <!-- PAGE HEADER (and active client name indicator on the right) -->
-            <div class="content-header">
-                <div class="container">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">Transactie</h1>
-                        </div><!-- /.col -->
-                        <div class="col-sm-6">
-                            <h5 id="active-client-name-breadcrumb" class="float-right"></h5>
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
-            </div>
-            <!-- /.content-header -->
+    <!-- PAGE HEADER (and active client name indicator on the right) -->
+    <div class="content-header">
+        <div class="container">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Transactie</h1>
+                </div><!-- /.col -->
+                <div class="col-sm-6">
+                    <h5 id="active-client-name-breadcrumb" class="float-right"></h5>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
 
-            <!-- MAIN CONTENT -->
-            <div class="content">
-                <div class="container">
+        <!-- MAIN CONTENT -->
+        <div class="content">
+            <div class="container">
 
-                    <!-- TRANSACTION OVERVIEW -->
-                    <div class="card card-primary shadow">
-                        <div class="card-header">
-                            <h3 class="card-title"></h3>
-                        </div>
+                <!-- TRANSACTION OVERVIEW -->
+                <div class="card card-primary shadow">
+                    <div class="card-header">
+                        <h3 class="card-title"></h3>
+                    </div>
 
-                        <div class="card-body">
-                            <section class="content">
-                                <div class="container-fluid">
+                    <div class="card-body">
+                        <section class="content">
+                            <div class="container-fluid">
 
-                                    <!-- Default box -->
-                                    <div class="card-body pb-0">
-                                        <div class="row">
+                                <!-- Default box -->
+                                <div class="card-body pb-0">
+                                    <div class="row">
 
-                                            <!-- SENDER DETAILS -->
-                                            <div class="col-12 col-sm-12 col-md-6 d-flex align-items-stretch flex-column">
-                                                <div class="card bg-light d-flex flex-fill">
-                                                    <div class="card-header text-muted border-bottom-0">
-                                                        <h6>Van :</h6>
-                                                    </div>
-                                                    <div class="card-body pt-0">
-                                                        <div class="row">
-                                                            <div class="col-7">
-                                                                <h2 class="lead text-bold" id="userFullName">
-                                                                    Van persoon naam</h2>
-                                                                <div>
-                                                                    <p id="balance">
-                                                                        € Balance
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-5 text-center">
-                                                                <img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;"
-                                                                     id="senderAvatar"
-                                                                     alt="user-avatar" class="img-circle img-fluid">
+                                        <!-- SENDER DETAILS -->
+                                        <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch flex-column">
+                                            <div class="card bg-light d-flex flex-fill">
+                                                <div class="card-header text-muted border-bottom-0">
+                                                    <h6>Van :</h6>
+                                                </div>
+                                                <div class="card-body pt-0">
+                                                    <div class="row">
+                                                        <div class="col-7">
+                                                            <h2 class="lead text-bold" id="userFullName">
+                                                                Van persoon naam</h2>
+                                                            <div>
+                                                                <p id="balance" >
+                                                                    € Balance
+                                                                </p>
                                                             </div>
                                                         </div>
+
+                                                        <div class="col-5 text-center">
+                                                            <img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" id="senderAvatar"
+                                                                 alt="user-avatar" class="img-circle img-fluid">
+                                                        </div>
                                                     </div>
-                                                    <div class="card-footer">
-                                                        <div class="text-left">
-                                                            <h5 class="pt-0">
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="text-left">
+                                                        <h5 class="pt-0">
                                                                <span style="color: darkred;">
                                                                    <i class="fas fa-lg fa-credit-card "
                                                                       style="margin-right:5px;"></i>
                                                                </span>
-                                                                <span id="accountIBAN">BankIBAN</span></h5>
-                                                        </div>
+                                                            <span id="accountIBAN">BankIBAN</span></h5>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <!-- AMOUNT & RECEIVER DETAILS -->
-                                            <div class="col-12 col-sm-12 col-md-6 d-flex align-items-stretch flex-column">
-                                                <div class="card bg-light d-flex flex-fill">
-                                                    <div class="card-header text-muted border-bottom-0">
-                                                        <h6>Bedrag:</h6>
-                                                    </div>
-                                                    <div class="card-body pt-0">
-                                                        <form name="transaction" onSubmit="return validateIBAN()">
-                                                            <div class="row">
-                                                                <!-- AMOUNT INPUT SECTION -->
-                                                                <div class="col-8" style="padding-right:0">
-                                                                    <!-- EURO SIGN-->
-                                                                    <div class="input-group-prepend">
+                                        <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch flex-column">
+                                            <div class="card bg-light d-flex flex-fill">
+                                                <div class="card-header text-muted border-bottom-0">
+                                                    <h6 for="transaction_amount_euro">Bedrag:</h6>
+                                                </div>
+                                                <div class="card-body pt-0">
+                                                    <form name="transaction" onSubmit="return validateIBAN()">
+
+                                                        <div class="row">
+
+                                                            <div class="col-6">
+                                                                <div class="input-group-prepend">
                                                                     <span class="input-group-text">
                                                                         <i class="fas fa-euro-sign"></i>
                                                                     </span>
-                                                                        <!-- EURO AMOUNT INPUT-->
-                                                                        <input type="tel"
-                                                                               class="form-control"
-                                                                               oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"
-                                                                               maxlength="8"
-                                                                               id="transaction_amount_euro"
-                                                                               name="transaction_amount_euro"
-                                                                               value="0"
-                                                                               required>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-4" style="padding-left: 0">
-                                                                    <!-- DECIMAL COMMA SEPARATOR -->
-                                                                    <div class="input-group-prepend">
-                                                                    <span class="input-group-text">
-                                                                        ,
-                                                                    </span>
-                                                                        <!-- EUROCENT INPUT -->
-                                                                        <input type="tel"
-                                                                               class="form-control"
-                                                                               maxlength="2"
-                                                                               oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"
-                                                                               id="transaction_amount_euro_cents"
-                                                                               name="transaction_amount_euro_cents"
-                                                                               value="00"
-                                                                               required>
-                                                                    </div>
-                                                                </div>
+
+                                                        <input type="tel"
+                                                               class="form-control"
+                                                               oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"
+                                                               maxlength="6"
+                                                               id="transaction_amount_euro"
+                                                               name="transaction_amount_euro"
+                                                               value="0"
+                                                               required>
+                                                        </div>
                                                             </div>
-                                                            <br>
 
-                                                            <label for="recipient_IBAN">Rekeningnummer
-                                                                ontvanger:</label>
-                                                            <input type="text" class="form-control" id="recipient_IBAN"
-                                                                   name="recipient_IBAN" required><br>
-                                                            <!--                                                        <button type="button"  id="check_iban" onclick="checkAllInformation()" value="button">Check</button><br><br>-->
+                                                            <div class="col-1 flex-column" style="align-content: flex-end">
+                                                        <label for="transaction_amount_euro_cents" id="comma" class="align-bottom">,</label>
+                                                        </div>
+                                                            <div class="col-4">
+                                                            <input type="tel"
+                                                               class="form-control"
+                                                               maxlength="2"
+                                                               oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"
+                                                               id="transaction_amount_euro_cents"
+                                                               name="transaction_amount_euro_cents"
+                                                               value="00"
+                                                               required>
+                                                        </div>
+                                                        </div>
 
-                                                            <!--    Uchange to text field , with max amount characters-->
-                                                            <label for="transaction_description">Omschrijving
-                                                                transactie:</label><br>
-                                                            <input type="text" class="form-control"
-                                                                   id="transaction_description"
-                                                                   name="transaction_description"><br>
+                                                        <label for="recipient_IBAN">Rekeningnummer ontvanger:</label>
+                                                        <input type="text" class="form-control" id="recipient_IBAN" name="recipient_IBAN" required><br>
+<!--                                                        <button type="button"  id="check_iban" onclick="checkAllInformation()" value="button">Check</button><br><br>-->
 
-                                                            <input id="submit"
-                                                                   class="btn btn-block btn-outline-secondary"
-                                                                   name="submit" onclick="checkAllInformation()"
-                                                                   type="submit"
-                                                            value="Verstuur">
+                                                        <!--    Uchange to text field , with max amount characters-->
+                                                        <label for="transaction_description">Omschrijving transactie:</label><br>
+                                                        <input type="text" class="form-control" id="transaction_description" name="transaction_description"><br><br>
 
-                                                        </form>
-                                                    </div>
+                                                        <input id="submit" class="btn btn-block btn-outline-secondary" name = "submit" onclick="checkAllInformation()" type="submit">
 
+                                                    </form>
                                                 </div>
+
                                             </div>
-
-
                                         </div>
+
+
                                     </div>
                                 </div>
-                            </section>
+                            </div>
+                        </section>
 
-                        </div>
                     </div>
                 </div>
-
-
             </div>
-        </div>
+
+
+
+    </div>
+</div>
     </div>
 
-    <!-- ./wrapper -->
+<!-- ./wrapper -->
 
 
-    <!--JAVASCRIPT-->
+<!--JAVASCRIPT-->
 
-    <!-- jQuery -->
-    <script src="../../dependencies/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../../dependencies/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../dependencies/adminlte.min.js"></script>
-    <script defer src="../../javascript/Account/bankAccountOverall.js"></script>
+<!-- jQuery -->
+<script src="../../dependencies/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../dependencies/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dependencies/adminlte.min.js"></script>
+<script defer src="../../javascript/Account/bankAccountOverall.js"></script>
+<script defer src="../../javascript/generalFunctions.js"></script>
 </body>
 
 </html>

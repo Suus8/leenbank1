@@ -12,6 +12,18 @@ function resetLocalStorageToDashboard(){
 }
 //endregion
 
+//region get/put/post functions
+async function fetchData(URL,method) {
+    let requestOptions = {
+        method: method,
+        redirect: 'follow'
+    };
+    const response = await fetch(URL, requestOptions)
+    return await response.json()
+}
+//endregion
+
+
 //region presenting money functions
 function convertAmountInCentsToReadableString(amountInCents) {
     let paddedAmount = String(amountInCents).padStart(3,'0')

@@ -5,7 +5,7 @@
     <title>Welkom bij LeenmanBank!</title>
     <script rel="script" src="../../javascript/domManipulationMethods.js"></script>
     <script rel="script" src="../../javascript/regularExpressionChecks.js"></script>
-    <script rel="script" src="../../javascript/openAccountScript2.js"></script>
+    <script src="../../javascript/openAccountScript.js" rel="script"></script>
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dependencies/adminlte.min.css">
     <link rel="stylesheet" href="../../css/main.css">
@@ -46,12 +46,13 @@
             <!-- Right navbar links -->
             <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                 <li class="nav-item">
-                    <a href="../login.html" class="nav-link">Login</a>
+                    <a href="login.html" class="nav-link">Login</a>
                 </li>
             </ul>
         </div>
     </nav>
     <!-- /.navbar -->
+
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -61,8 +62,8 @@
             <div class="container">
                 <div class="row mb-2">
                     <div class="col-sm-12">
-                        <h1 class="m-0">Registratie geslaagd</h1>
-                        <h2 id="welcomeText"></h2>
+                        <h1 class="m-0">Welkom bij LeenmanBank!</h1>
+                        <h2>Registratie geslaagd</h2>
                         <p>Uw account is met succes aangemaakt en uw rekening is geopend. Welkom bij LeenmanBank!
                             <br>U ontvangt nog een email ter bevestiging van uw registratie. Hierin staan ook de link om in te loggen op uw
                             account bij LeenmanBank en alle nodige informatie. Indien van toepassing ontvangt u ook de contactgegevens van uw
@@ -71,7 +72,7 @@
                             overzicht van uw rekeningen.
                             <br>Klik op de 'Sluit'-knop indien u terug wenst te gaan naar de homepage van LeenmanBank.</p>
 
-                        <a href="../login.html" onclick="logInWithUserName()"><input type="button" value="Log in"></a>
+                        <a href="../login.html"><input type="button" value="Log in"></a> <!--TODO: link to log in page Abuzer-->
                         <a href="../websiteLeenmanBank.html"><input type="button" value="Sluit"></a>
                     </div><!-- /.col -->
                     <div class="col-sm-6">

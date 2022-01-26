@@ -29,17 +29,15 @@ function storeInfo() {
 }
 
 function saveTransaction(){
-    let requestOptions = {
-        method: 'POST',
-        redirect: 'follow'
-    };
+
     const transactionAmount = localStorage.getItem("UserEuroAmountInCent");
     const senderIban = localStorage.getItem("SelectedIban")
     const receiverIban = localStorage.getItem("userReceiverIBAN")
     const userDescription = localStorage.getItem("userDescription")
 
-    fetch(`http://localhost:8888/saveNewTransaction?transactionAmount=${transactionAmount}&ibanSender=${senderIban}&ibanReceiver=${receiverIban}&description=${userDescription}`, requestOptions)
-        .then(response => response.text())
+    const url = `http://localhost:8888/saveNewTransaction?transactionAmount=${transactionAmount}&ibanSender=${senderIban}&ibanReceiver=${receiverIban}&description=${userDescription}`
+
+    let result = fetchData(url,'POST')
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
 
