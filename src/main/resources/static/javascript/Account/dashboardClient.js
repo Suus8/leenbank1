@@ -2,7 +2,7 @@ const authContainer = document.querySelector("#accountAuthorized")
 const ownContainer = document.querySelector("#accountOwned")
 
 
-document.onreadystatechange = function (e) {
+document.onreadystatechange = function () {
     let user = JSON.parse(localStorage.getItem(`user`))
     let clientId = user["id"]
     let clientFullName = user["name"]
@@ -26,7 +26,6 @@ function getAllAccounts() {
 }
 
 async function getAccounts(endpoint, container) {
-    console.log(container)
     let authorizedAccountData
 
 
@@ -66,7 +65,7 @@ async function getAccounts(endpoint, container) {
         p_account_type.innerText = obj["accountType"]
         div.appendChild(p_account_type)
 
-        const a1 = createHyperlink(iban, `/html/bankAccount/singleBankAccountPage.html`, 'naar je account')
+        const a1 = createHyperlink(iban, `/html/bankAccount/transactionOverviewAccount.html`, 'naar je account')
         div.appendChild(a1)
 
         if (p_account_Owner.innerText === retrieveObjectFromLocalStorage('user').name) {

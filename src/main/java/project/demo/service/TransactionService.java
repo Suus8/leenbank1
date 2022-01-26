@@ -92,8 +92,7 @@ public class TransactionService {
     private void verifyDataPayment() {
         if (paymentData.getPin() >= 0) {
             verifyPinCode();
-            if (statuscode == TransActionStatusCode.CODE_PIN_NOT_CORRECT)
-                return;
+            if (statuscode == TransActionStatusCode.CODE_PIN_NOT_CORRECT) return;
         }
         if (accountReceiver == null)
             statuscode = TransActionStatusCode.CODE_IBAN_RECEIVER_NOT_FOUND;
@@ -108,8 +107,7 @@ public class TransactionService {
     }
 
     private void verifyPinCode() {
-        if (accountSender != null) {
-            if (accountSender.getPincode() != paymentData.getPin())
+        if (accountSender != null && accountSender.getPincode() != paymentData.getPin()) {
                 statuscode = TransActionStatusCode.CODE_PIN_NOT_CORRECT;
         }
     }

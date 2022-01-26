@@ -43,8 +43,6 @@ public class Account {
     private transient final long DEFAULT_START_BALANCE = 0L;
     @Transient
     private transient final int DEFAULT_PINCODE = 12345;
-    @Transient
-    private transient final int TOP10 = 10;
 
     //endregion
     //region CONSTRUCTOR
@@ -62,9 +60,7 @@ public class Account {
     //region METHODS
     private String generateIBAN(){
         String tempIBAN = AccountToIbanConverter.convertAccountToIban(lastAccountNumber);
-
-        this.lastAccountNumber++;
-
+        lastAccountNumber++;
         return tempIBAN;
     }
 
@@ -80,24 +76,6 @@ public class Account {
 
     public void addTransactionToTransactionHistory(Transaction transaction) {
         this.transactionHistory.add(transaction);
-    }
-
-
-    // get/generate the 10 recent transaction from the transactionHistory
-    // TODO does this need to be put in a Service? (not in model class)
-    public List<Transaction> get10RecentTransaction() {
-        List<Transaction> recent10Transaction;
-        // if length of the list is smaller than 10
-        if (this.transactionHistory.size() <= TOP10) {
-            recent10Transaction = this.transactionHistory;
-            return recent10Transaction;
-        }
-        // if transaction history length is bigger than 10
-        else {
-            int start = transactionHistory.size() - TOP10;
-            recent10Transaction = this.transactionHistory.subList(start, (transactionHistory.size() + 1));
-            return recent10Transaction;
-        }
     }
 
     //endregion

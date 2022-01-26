@@ -7,17 +7,9 @@ const transactionsCurrentAccountEndpoint = `http://localhost:8888/transactionFor
 const transactionTableBody = document.querySelector("#transaction-dto-table-body")
 const accountInfoForIbanEndpoint = `http://localhost:8888/getAccountByIBAN?iban=${localStorage.getItem("SelectedIban")}`
 
-async function fetchData(URL) {
-    let requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    };
-    const response = await fetch(URL, requestOptions)
-    return await response.json()
-}
 
 async function loadSelectedAccountInfo(ibanId, nameId, balanceId) {
-    fetchData(accountInfoForIbanEndpoint)
+    let data = fetchData(accountInfoForIbanEndpoint,'GET')
         .then(data => {
             document.getElementById(ibanId).innerHTML = data["accountIBAN"]
             document.getElementById(nameId).innerHTML = data["clientName"]
@@ -27,7 +19,7 @@ async function loadSelectedAccountInfo(ibanId, nameId, balanceId) {
 }
 
 async function loadTransactions() {
-    let data = await fetchData(transactionsCurrentAccountEndpoint)
+    let data = await fetchData(transactionsCurrentAccountEndpoint, 'GET')
 
     data.forEach(obj => {
         const tr = document.createElement("tr")
@@ -60,7 +52,7 @@ async function loadTransactions() {
 
         transactionTableBody.appendChild(tr)
     })
-
+}
     function convertRawDateToDDMMYYYY(rawDate) {
         let tokens = rawDate.split("-")
         return tokens[2] + "-" + tokens[1] + "-" + tokens[0]
@@ -72,4 +64,4 @@ async function loadTransactions() {
         else amount = "- "
         return amount + convertAmountInCentsToReadableString(rawAmount)
     }
-}
+

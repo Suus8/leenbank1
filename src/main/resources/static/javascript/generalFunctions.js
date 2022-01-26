@@ -13,12 +13,12 @@ function resetLocalStorageToDashboard(){
 //endregion
 
 //region get/put/post functions
-async function fetchData(URL,method) {
+async function fetchData(url,method) {
     let requestOptions = {
         method: method,
         redirect: 'follow'
     };
-    const response = await fetch(URL, requestOptions)
+    const response = await fetch(url, requestOptions)
     return await response.json()
 }
 //endregion

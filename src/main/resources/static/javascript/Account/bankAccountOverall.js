@@ -7,8 +7,8 @@ async function getSelectedAccountInfo(ibanElement, nameElement, balanceElement, 
     let data = fetchData(url, 'GET')
         .then(data => {
             document.getElementById(ibanElement).innerHTML = data["accountIBAN"]
-            let balanceValueInCents = String(data["accountBalanceInCents"]).padStart(3, '0')
-            document.getElementById(balanceElement).innerHTML = "€ " + balanceValueInCents.slice(0, -2) + "," + balanceValueInCents.slice(-2)
+            let balanceValueInCents = data["accountBalanceInCents"]
+            document.getElementById(balanceElement).innerHTML = convertAmountInCentsToReadableString(balanceValueInCents)
 
             let name = data["clientName"]
             document.getElementById(nameElement).innerHTML = name;
