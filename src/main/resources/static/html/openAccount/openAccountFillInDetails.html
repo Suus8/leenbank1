@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rekening openen</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../dependencies/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../dependencies/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dependencies/adminlte.min.css">
+    <!-- Own style -->
+    <link rel="stylesheet" href="../../css/main.css">
+    <!-- Scripts -->
+    <script rel="script" src="../../javascript/domManipulationMethods.js"></script>
+    <script rel="script" src="../../javascript/regularExpressionChecks.js"></script>
+    <script rel="script" src="../../javascript/openAccountScript2.js"></script>
+</head>
+
+<body class="hold-transition layout-top-nav">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <div class="container">
+            <a href="#" class="navbar-brand">
+                <img src="../../images/cmc_logo.png" alt="CMC Logo" class="brand-image">
+                <span class="brand-text font-weight-bold cmc-blauw">LeenmanBank</span>
+            </a>
+            <!-- Navbar toggler -->
+            <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
+                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                <!-- Left navbar links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Right navbar links -->
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                <li class="nav-item">
+                    <a href="login.html" class="nav-link">Login</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- PAGE HEADER -->
+        <div class="content-header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-12">
+                        <h1 class="m-0">Open een rekening bij LeenmanBank</h1>
+                        <p>In drie simpele stappen is uw rekening bij LeenmanBank geopend. Volg de stappen hieronder
+                            waarna u direct uw rekening kunt inzien.</p>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <h5 id="active-client-name-breadcrumb" class="float-right"></h5>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+
+        <!-- MAIN CONTENT/COMPLETE DETAILS -->
+        <div class="content">
+            <div class="container">
+
+                <!-- CHOOSE ACCOUNT TYPE -->
+                <div class="card card-primary shadow" id="typeOfAccountCard">
+                    <div class="card-header">
+                        <h3 class="card-title">Stap 1) Type rekening</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    style="background-color: deepskyblue">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <section class="content">
+                            <div class="container-fluid">
+                                <!--
+                                Step 1: select type of account - next step will be shown after clicking 'volgende'
+                                -->
+                                <p>Selecteer het type rekening dat u wilt openen. Bij zakelijke rekeningen dient u
+                                    ook te selecteren in welke sector uw bedrijf actief is. Verder heeft u na het openen
+                                    van de rekening meerdere opties.
+                                    Hierover zal uw account manager contact met u opnemen. Deze account manager is
+                                    tevens uw contactpersoon bij de LeenmanBank.</p>
+
+                                <!-- radio buttons account type-->
+                                <div id="typesContainer">
+                                    <input type="radio" id="consumerRadioButton" name="type" value="Particulier"
+                                           onclick="hideElement('sectorContainer')" checked>
+                                    <label for="consumer">Particulier</label>
+                                    <input type="radio" id="smallBusinessRadioButton" name="type" value="Zakelijk"
+                                           onclick="showElement('sectorContainer')">
+                                    <label for="smallBusiness">Zakelijk</label>
+                                </div>
+
+                                <!-- dropdown sectors -->
+                                <div id="sectorContainer" style="display: none">
+                                    <select id="sectorDropdownOptions">
+                                        <option name="sector" value="BUSINESS_SERVICES">Zakelijke dienstverlening
+                                        </option>
+                                        <option name="sector" value="CONSTRUCTION">Bouw</option>
+                                        <option name="sector" value="HEALTHCARE">Gezondheid</option>
+                                        <option name="sector" value="RETAIL">Detailhandel</option>
+                                        <option name="sector" value="CULTURE_SPORTS_RECREATION">Cultuur, Sport &
+                                            Recreatie
+                                        </option>
+                                        <option name="sector" value="ICT_AND_MEDIA">ICT & Media</option>
+                                        <option name="sector" value="WHOLESALE">Groothandel</option>
+                                        <option name="sector" value="AGRICULTURE_HORTICULTURE">Land- & Tuinbouw
+                                        </option>
+                                        <option name="sector" value="INDUSTRIAL">Industrie</option>
+                                        <option name="sector" value="LOGISTICS">Logistiek</option>
+                                        <option name="sector" value="HOSPITALITY">Horeca</option>
+                                        <option name="sector" value="FINANCE">Financiële Instellingen</option>
+                                        <option name="sector" value="ENERGY_WATER_ENVIRONMENT">Energie, Water &
+                                            Milieu
+                                        </option>
+                                        <option name="sector" value="OTHER">Overige</option>
+                                    </select>
+                                    <br>
+                                </div>
+                                <!--End of Step 1, button click triggers visibility of next step + saves accounttype locally-->
+                                <button onclick="saveAccountType()">Volgende</button>
+                            </div>
+                            <!-- /.row -->
+                        </section>
+                    </div><!-- /.container-fluid -->
+                    <!-- /.content -->
+                </div>
+
+                <!-- FILL IN DETAILS -->
+                <div class="card card-primary shadow" id="fillInDetailsCard" style="display: block">
+                    <!--TODO set to none-->
+                    <div class="card-header">
+                        <h3 class="card-title">Gegevens</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    style="background-color: deepskyblue">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <section class="content">
+                            <div class="container-fluid">
+                                <!--
+                                Tabs for each part of step 2 of the registration
+                                -->
+                                <div class="tabContainer">
+                                    <button class="tabsItself" id="accountDetailsTab">Account gegevens
+                                    </button>
+                                    <button class="tabsItself" id="personalDetailsTab">Persoonlijke
+                                        gegevens
+                                    </button>
+                                    <button class="tabsItself" id="companyDetailsTab">Bedrijfsgegevens
+                                    </button>
+                                    <button class="tabsItself" id="contactDetailsTab">Contact gegevens
+                                    </button>
+                                </div>
+
+                                <!--
+                                Step 2 part A: fill in account details - next part will be shown after clicking 'volgende'
+                                -->
+                                <div id="accountDetails" class="tabContent">
+                                    <h2>Account gegevens</h2>
+                                    <p>Vul hier uw gebruikersnaam en wachtwoord in om te kunnen inloggen op uw account
+                                        bij LeenmanBank. In uw account
+                                        heeft u toegang tot uw rekeningen, evenals extra opties indien u een zakelijke
+                                        account wilt openen.</p>
+                                    <table>
+                                        <!-- Username fields/row-->
+                                        <tr>
+                                            <td><label for="username">Gebruikersnaam</label></td>
+                                            <td><input type="text" id="username" name="username"
+                                                       onfocus="showElement('usernameRequirements')"
+                                                       onblur="hideElement('usernameRequirements')"
+                                                       onkeyup="updateUsernameCheckOnInput('username')"
+                                                       minlength="3" required></td>
+                                            <td>
+                                                <ul id="usernameRequirements" class="inputRequirements"
+                                                    style="display: none">
+                                                    <li id="userReqUnique">Unieke gebruikersnaam binnen onze bank</li>
+                                                    <li id="userReq3Chars">Minimaal 3 tekens</li>
+                                                    <li id="userReqOnlyNumbersAndLetters">Alleen letters, cijfers,
+                                                        underscore en koppelteken zijn
+                                                        toegestaan
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <!--Password fields/row-->
+                                        <tr>
+                                            <td><label for="password">Wachtwoord</label></td>
+                                            <!--type="password" means it's not visible when typed in-->
+                                            <td><input type="password" id="password" name="password"
+                                                       onfocus="showElement('passwordRequirements')"
+                                                       onblur="hideElement('passwordRequirements')"
+                                                       onkeyup="updatePasswordCheckOnInput('password')"
+                                                       minlength="8" required></td>
+                                            <td>
+                                                <ul id="passwordRequirements" class="inputRequirements"
+                                                    style="display: none">
+                                                    <li id="pwReq8Chars">Minimaal 8 tekens</li>
+                                                    <li id="pwReq1Number">Minimaal 1 cijfer</li>
+                                                    <li id="pwReq1Capital">Minimaal 1 hoofdletter</li>
+                                                    <li id="pwReq1LowerCase">Minimaal 1 kleine letter</li>
+                                                    <li id="pwReq1Special">Minimaal 1 speciaal teken</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <!--Repeat password fields/row-->
+                                        <tr>
+                                            <td><label for="repeatPassword">Herhaal wachtwoord</label></td>
+                                            <td><input type="password" id="repeatPassword" name="repeatPassword"
+                                                       onfocus="showElement('repeatPwRequirements')"
+                                                       onblur="hideElement('repeatPwRequirements')"
+                                                       onkeyup="updateRepeatPasswordCheckOnInput('password','repeatPassword')"
+                                                       required></td>
+                                            <td>
+                                                <ul id="repeatPwRequirements" class="inputRequirements"
+                                                    style="display: none">
+                                                    <li id="repeatPwSame">Herhaal uw ingevoerde wachtwoord</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- Buttons to next/previous tab-->
+                                    <button id="nextButtonConsumerOrCompany"
+                                            onclick="checkAccountDetails()">
+                                        Volgende
+                                    </button>
+                                </div>
+
+                                <!--
+                                Step 2 part B, option 1: fill in personal details - next part will be shown after clicking 'volgende'
+                                -->
+                                <div id="personalDetails" class="tabContent" style="display: none">
+                                    <h2>Persoonlijke gegevens</h2>
+                                    <p>Vul hieronder uw persoonlijke gegevens in zoals vermeld op uw paspoort.</p>
+                                    <table>
+                                        <!--TableHeaders: not needed-->
+
+                                        <!--TableRows: user fills in the right column-->
+                                        <tr>
+                                            <td><label for="ssn">BSN</label></td>
+                                            <td><input type="text" id="ssn" name="ssn"
+                                                       onfocus="showElement('ssnRequirements')"
+                                                       onblur="hideElement('ssnRequirements')"
+                                                       onkeyup="updateSsnCheckOnInput('ssn')" min="0" required></td>
+                                            <td>
+                                                <ul id="ssnRequirements" class="inputRequirements"
+                                                    style="display: none">
+                                                    <li id="ssnReqUnique">U kunt zich maar één keer registreren met uw
+                                                        BSN
+                                                    </li>
+                                                    <li id="ssnReqChars">Een BSN is altijd 9 cijfers</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="firstName">Voornaam</label></td>
+                                            <td><input type="text" id="firstName" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="lastName">Achternaam (en tussenvoegsels)</label></td>
+                                            <td><input type="text" id="lastName" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="dateOfBirth">Geboortedatum</label></td>
+                                            <td><input type="date" id="dateOfBirth" name="setTodaysDate" required></td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- Buttons to next/previous tab TODO Add check-->
+                                    <button onclick="showPreviousTab('personalDetailsTab','accountDetailsTab','accountDetails')">
+                                        Vorige
+                                    </button>
+                                    <button onclick="checkIdBeforeNextTab()">Volgende</button>
+                                </div>
+
+                                <!--
+                                Step 2 part B, option 2: fill in company details - next part will be shown after clicking 'volgende'
+                                -->
+                                <div id="companyDetails" class="tabContent" style="display: none">
+                                    <h2>Bedrijfsgegevens</h2>
+                                    <p>Vul hieronder de gegevens in van uw onderneming.</p>
+                                    <table>
+                                        <!--TableRows: user fills in the right column-->
+                                        <tr>
+                                            <td><label for="coC">KvK-nummer</label></td>
+                                            <td><input type="number" id="coC" name="coC"
+                                                       onfocus="showElement('coCRequirements')"
+                                                       onblur="hideElement('coCRequirements')"
+                                                       onkeyup="updateCoCCheckOnInput('coC')" min="0" required></td>
+                                            <td>
+                                                <ul id="coCRequirements" class="inputRequirements"
+                                                    style="display: none">
+                                                    <li id="coCReqUnique">U kunt uw bedrijf maar één keer registreren
+                                                        met het KvK-nummer
+                                                    </li>
+                                                    <li id="coCReqChars">Een KvK-nummer is altijd 8 cijfers</li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="companyName">Bedrijfsnaam</label></td>
+                                            <td><input type="text" id="companyName" name="companyName" required></td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- Buttons to next/previous tab-->
+                                    <button onclick="showPreviousTab('companyDetailsTab','accountDetailsTab','accountDetails')">
+                                        Vorige
+                                    </button>
+                                    <button onclick="showNextTab('companyDetailsTab','contactDetailsTab','contactDetails')">
+                                        Volgende
+                                    </button>
+                                </div>
+
+                                <!--
+                                Step 2 part C: fill in contact details
+                                -->
+                                <div id="contactDetails" class="tabContent" style="display: none">
+                                    <h2>Contact gegevens</h2>
+                                    <p>Vul hieronder uw contact gegevens in. Deze worden gebruikt ter verificatie van uw
+                                        rekening evenals voor
+                                        (elektronische) communicatie.</p>
+                                    <table>
+                                        <tr>
+                                            <td><label for="email">Email</label></td>
+                                            <td><input type="text" id="email" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="telephoneNumber">Telefoonnummer</label></td>
+                                            <td><input type="text" id="telephoneNumber" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="street">Straatnaam</label></td>
+                                            <td><input type="text" id="street" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="houseNumber">Huisnummer</label></td>
+                                            <td><input type="number" id="houseNumber" min="0" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="houseNumberAddition">Toevoeging</label></td>
+                                            <td><input type="text" id="houseNumberAddition"></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="zipCode">Postcode</label></td>
+                                            <td><input type="text" id="zipCode" required></td>
+                                        </tr>
+                                        <tr>
+                                            <td><label for="city">Stad</label></td>
+                                            <td><input type="text" id="city" required></td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- Buttons to next/previous tab-->
+                                    <button id="previousButtonConsumerAccount"
+                                            onclick="showPreviousTab('contactDetailsTab','personalDetailsTab','personalDetails')">
+                                        Vorige
+                                    </button>
+                                    <button id="previousButtonSmallBusinessAccount"
+                                            onclick="showPreviousTab('contactDetailsTab','companyDetailsTab','companyDetails')">
+                                        Vorige
+                                    </button>
+                                    <button onclick="checkAllDetailsComplete()">Controleer gegevens</button>
+                                </div>
+
+                                <!--End of Step 2, button click goes to next page-->
+                                <button id="saveButton" style="display: none"><a href="openAccountCheckDetails.html">Volgende</a>
+                                </button>
+                            </div>
+                            <!-- /.row -->
+                        </section>
+                    </div><!-- /.container-fluid -->
+                    <!-- /.content -->
+                </div>
+
+                <!-- CHECK DETAILS -->
+                <div class="card card-primary shadow" id="checkInDetailsCard" style="display: block">
+                    <!--TODO set to none-->
+                    <div class="card-header">
+                        <h3 class="card-title">Gegevens</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"
+                                    style="background-color: deepskyblue">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <section class="content">
+                            <div class="container-fluid">
+                                <h2>Type rekening</h2>
+                                <label id="typeOfAccount">Uw antwoord</label>
+
+                                <h2>Account gegevens</h2>
+                                <table>
+                                    <tr>
+                                        <td>Gebruikersnaam</td>
+                                        <td id="username">Uw antwoord</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wachtwoord</td>
+                                        <td id="password">Uw antwoord</td>
+                                    </tr>
+                                </table>
+
+                                <div id="consumer">
+                                    <h2>Persoonlijke gegevens</h2>
+                                    <table>
+                                        <tr>
+                                            <td>BSN</td>
+                                            <td id="ssn">Uw antwoord</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Voornaam</td>
+                                            <td id="firstName">Uw antwoord</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Achternaam (en tussenvoegsels)</td>
+                                            <td id="lastName">Uw antwoord</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Geboortedatum</td>
+                                            <td id="dateOfBirth">Uw antwoord</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div id="smallBusiness">
+                                    <h2>Bedrijfsgegevens</h2>
+                                    <table>
+                                        <tr>
+                                            <td>KvK</td>
+                                            <td id="coC">Uw antwoord</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bedrijfsnaam</td>
+                                            <td id="companyName">Uw antwoord</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sector</td>
+                                            <td id="sector">Uw antwoord</td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <h2>Contact gegevens</h2>
+                                <table>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td id="email">Uw antwoord</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Telefoonnummer</td>
+                                        <td id="telephoneNumber">Uw antwoord</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Straatnaam</td>
+                                        <td id="street">Uw antwoord</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Huisnummer</td>
+                                        <td id="houseNumber">Uw antwoord</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Toevoeging</td>
+                                        <td id="houseNumberAddition">Uw antwoord</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Postcode</td>
+                                        <td id="zipCode">Uw antwoord</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stad</td>
+                                        <td id="city">Uw antwoord</td>
+                                    </tr>
+                                </table>
+
+                                <button><a href="openAccountCompleteDetails.html">Wijzig</a></button>
+                                <button id="createAccountButton" onclick="createAccount()"><a
+                                        href="openAccountSucceeded.html">Volgende</a></button>
+                            </div>
+                            <!-- /.row -->
+                        </section>
+                    </div><!-- /.container-fluid -->
+                    <!-- /.content -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- ./wrapper -->
+
+<!--JAVASCRIPT-->
+
+<!-- jQuery -->
+<script src="../../dependencies/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../dependencies/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dependencies/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dependencies/demo.js"></script>
+
+</body>
+</html>

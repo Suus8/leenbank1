@@ -27,7 +27,7 @@ function getAllAccounts() {
 
 async function getAccounts(url, container) {
     console.log(container)
-    let authorizedAccountData = null
+    let authorizedAccountData
 
     let requestOptions = {
         method: 'GET',
@@ -90,6 +90,9 @@ async function getAccounts(url, container) {
         container.appendChild(div)
     })
 }
+
+
+
 
 function createHyperlink(iban, link, text) {
     const a = document.createElement("a")

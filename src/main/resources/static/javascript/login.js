@@ -37,9 +37,9 @@ btn.addEventListener("click", async (e) => {
             case "Person":
                 window.location.href = "http://localhost:8888/html/dashboard/dashboardClient.html";
                 break;
-            // case "Company":
-            //     window.location.href = "http://localhost:8888/html/dashboardCompany";
-            //     break;
+            case "Company":
+                window.location.href = "http://localhost:8888/html/dashboard/dashboardClient.html";
+                break;
             case "Employee":
                 window.location.href = "http://localhost:8888/html/dashboard/dashboardEmployee.html";
                 break;

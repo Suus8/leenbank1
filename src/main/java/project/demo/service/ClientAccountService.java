@@ -9,6 +9,8 @@ import project.demo.repositories.IAccountRepo;
 import java.util.ArrayList;
 import java.util.List;
 
+import static project.demo.utility.CompanySectorRetriever.retrieveCompanySector;
+
 @Service
 public class ClientAccountService {
 
@@ -52,16 +54,6 @@ public class ClientAccountService {
             name = "naam onbekend";
         }
         return name;
-    }
-
-    private String retrieveCompanySector(Account account) {
-        String sector;
-        if (account.getAccountHolder() instanceof Company) {
-            sector = ((Company) (account.getAccountHolder())).getCompanyDetails().getSector().toString();
-        } else {
-            sector = "n.v.t.";
-        }
-        return sector;
     }
 
     public List<AccountDTO> getAllAccountDTOs() {

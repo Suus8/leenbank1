@@ -7,7 +7,6 @@ import project.demo.dto.ClientAuthorizationDTO;
 import project.demo.model.AbstractClient;
 import project.demo.model.Account;
 import project.demo.model.ClientAuthorization;
-import project.demo.model.Company;
 import project.demo.repositories.IAbstractClientRepo;
 import project.demo.repositories.IAccountRepo;
 import project.demo.repositories.IClientAuthorization;
@@ -17,6 +16,8 @@ import project.demo.utility.ClientNameUtility;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static project.demo.utility.CompanySectorRetriever.retrieveCompanySector;
 
 @Service
 public class BankAccountService {
@@ -115,16 +116,6 @@ public class BankAccountService {
         List<Long> accountIds = accountRepo.getAccountIDWhereClientIsAuthorized(id);
         if (accountIds.isEmpty()) return null;
         return addAccountDTOsToList(accountIds);
-    }
-
-    private String retrieveCompanySector(Account account) {
-        String sector;
-        if (account.getAccountHolder() instanceof Company) {
-            sector = ((Company) (account.getAccountHolder())).getCompanyDetails().getSector().toString();
-        } else {
-            sector = "n.v.t.";
-        }
-        return sector;
     }
 
     public boolean checkIfIBANexists(String iban) {

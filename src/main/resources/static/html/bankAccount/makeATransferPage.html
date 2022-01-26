@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="../../css/main.css">
     <meta charset="UTF-8">
-    <title>Transactie - Leenbank</title>
+    <link href="../../css/main.css" rel="stylesheet">
     <script src="../../javascript/Account/makeATransferPage.js" rel="script"></script>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -15,6 +14,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../../dependencies/adminlte.min.css">
     <link rel="stylesheet" href="../../css/main.css">
+
     <script rel="script" src="../../javascript/domManipulationMethods.js"></script>
 </head>
 <body class="hold-transition layout-top-nav">
@@ -50,7 +50,9 @@
         </div>
     </nav>
     <!-- /.navbar -->
-<p align="right" id="currentDate" name = "currentDate">huidige datum</p>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
 
     <!-- PAGE HEADER (and active client name indicator on the right) -->
     <div class="content-header">
@@ -67,51 +69,137 @@
     </div>
     <!-- /.content-header -->
 
-<h3 id = "userFullName" name = "userFullName">Jan Janssen</h3>
+        <!-- MAIN CONTENT -->
+        <div class="content">
+            <div class="container">
 
-<form name="transaction" onSubmit="return validateIBAN()">
+                <!-- TRANSACTION OVERVIEW -->
+                <div class="card card-primary shadow">
+                    <div class="card-header">
+                        <h3 class="card-title"></h3>
+                    </div>
 
-    <p id="accountIBAN" name="accountIBAN">
-        BankIBAN
-    </p>
-    <p id="balance" name="balance">
-        € Balance
-    </p>
-    <br><br>
+                    <div class="card-body">
+                        <section class="content">
+                            <div class="container-fluid">
 
-    <label for="transaction_amount_euro">Bedrag:</label><br>
-    <span>€</span>
-    <input type="tel"
-           oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"
-           maxlength="6"
-           id="transaction_amount_euro"
-           name="transaction_amount_euro"
-           value="0"
-           required>
+                                <!-- Default box -->
+                                <div class="card-body pb-0">
+                                    <div class="row">
 
-    <label for="transaction_amount_euro_cents">,</label>
-    <input type="tel"
-           maxlength="2"
-           oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"
-           id="transaction_amount_euro_cents"
-           name="transaction_amount_euro_cents"
-           value="00"
-           required>
-    <br><br>
+                                        <!-- SENDER DETAILS -->
+                                        <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch flex-column">
+                                            <div class="card bg-light d-flex flex-fill">
+                                                <div class="card-header text-muted border-bottom-0">
+                                                    <h6>Van :</h6>
+                                                </div>
+                                                <div class="card-body pt-0">
+                                                    <div class="row">
+                                                        <div class="col-7">
+                                                            <h2 class="lead text-bold" id="userFullName">
+                                                                Van persoon naam</h2>
+                                                            <div>
+                                                                <p id="balance" >
+                                                                    € Balance
+                                                                </p>
+                                                            </div>
+                                                        </div>
 
-    <label for="recipient_IBAN">Rekeningnummer ontvanger:</label><br>
-    <input type="text" id="recipient_IBAN" name="recipient_IBAN" required><br><br>
-    <button type="button" id="check_iban" onclick="checkAllInformation()" value="button">Check</button><br><br>
+                                                        <div class="col-5 text-center">
+                                                            <img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" id="senderAvatar"
+                                                                 alt="user-avatar" class="img-circle img-fluid">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <div class="text-left">
+                                                        <h5 class="pt-0">
+                                                               <span style="color: darkred;">
+                                                                   <i class="fas fa-lg fa-credit-card "
+                                                                      style="margin-right:5px;"></i>
+                                                               </span>
+                                                            <span id="accountIBAN">BankIBAN</span></h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-    <!--    Uchange to text field , with max amount characters-->
-    <label for="transaction_description">Omschrijving transactie:</label><br>
-    <input type="text" id="transaction_description" name="transaction_description"><br><br>
+                                        <div class="col-12 col-sm-6 col-md-6 d-flex align-items-stretch flex-column">
+                                            <div class="card bg-light d-flex flex-fill">
+                                                <div class="card-header text-muted border-bottom-0">
+                                                    <h6 for="transaction_amount_euro">Bedrag:</h6>
+                                                </div>
+                                                <div class="card-body pt-0">
+                                                    <form name="transaction" onSubmit="return validateIBAN()">
 
-    <input id="submit" name = "submit" onclick=" goToTransferPage();getALLUserInput();" type="submit">
+                                                        <div class="row">
 
-</form>
+                                                            <div class="col-6">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text">
+                                                                        <i class="fas fa-euro-sign"></i>
+                                                                    </span>
+
+                                                        <input type="tel"
+                                                               class="form-control"
+                                                               oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"
+                                                               maxlength="6"
+                                                               id="transaction_amount_euro"
+                                                               name="transaction_amount_euro"
+                                                               value="0"
+                                                               required>
+                                                        </div>
+                                                            </div>
+
+                                                            <div class="col-1 flex-column" style="align-content: flex-end">
+                                                        <label for="transaction_amount_euro_cents" id="comma" class="align-bottom">,</label>
+                                                        </div>
+                                                            <div class="col-4">
+                                                            <input type="tel"
+                                                               class="form-control"
+                                                               maxlength="2"
+                                                               oninput="this.value=this.value.replace(/(?![0-9])./gmi,'')"
+                                                               id="transaction_amount_euro_cents"
+                                                               name="transaction_amount_euro_cents"
+                                                               value="00"
+                                                               required>
+                                                        </div>
+                                                        </div>
+
+                                                        <label for="recipient_IBAN">Rekeningnummer ontvanger:</label>
+                                                        <input type="text" class="form-control" id="recipient_IBAN" name="recipient_IBAN" required><br>
+<!--                                                        <button type="button"  id="check_iban" onclick="checkAllInformation()" value="button">Check</button><br><br>-->
+
+                                                        <!--    Uchange to text field , with max amount characters-->
+                                                        <label for="transaction_description">Omschrijving transactie:</label><br>
+                                                        <input type="text" class="form-control" id="transaction_description" name="transaction_description"><br><br>
+
+                                                        <input id="submit" class="btn btn-block btn-outline-secondary" name = "submit" onclick="checkAllInformation()" type="submit">
+
+                                                    </form>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+
+
+
     </div>
+</div>
+    </div>
+
 <!-- ./wrapper -->
+
 
 <!--JAVASCRIPT-->
 
@@ -121,8 +209,6 @@
 <script src="../../dependencies/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dependencies/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dependencies/demo.js"></script>
 <script defer src="../../javascript/Account/bankAccountOverall.js"></script>
 </body>
 

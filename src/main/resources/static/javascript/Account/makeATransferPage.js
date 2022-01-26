@@ -2,8 +2,7 @@
 
 // on loading page
 window.onload = function () {
-    setCurrentDate("currentDate")
-    getSelectedAccountInfo("accountIBAN","userFullName","balance")
+    getSelectedAccountInfo("accountIBAN","userFullName","balance","senderAvatar")
     storeElementInLocalStorage("existsIbanInDatabase", false)
     storeElementInLocalStorage("checkIfSufficientFunds", false)
 };
@@ -77,7 +76,7 @@ function goToTransferPage() {
 
 }
 
-function checkIBANinDatabase() {
+async function checkIBANinDatabase() {
     const inputIBAN = getUserInput('recipient_IBAN');
 
     var requestOptions = {
@@ -85,21 +84,16 @@ function checkIBANinDatabase() {
         redirect: 'follow'
     };
 
-    fetch("http://localhost:8888/checkIfIBANexists?iban="+inputIBAN, requestOptions)
+    await fetch("http://localhost:8888/checkIfIBANexists?iban="+inputIBAN, requestOptions)
         .then(response => response.text())
         .then(result =>{
             console.log("check iban: "+result)
-            if (result==="true"){
-                storeElementInLocalStorage("existsIbanInDatabase", "true")
-            } else {
-                storeElementInLocalStorage("existsIbanInDatabase", "false")
-            }
-        } )
+            storeElementInLocalStorage("existsIbanInDatabase", result)
+        })
         .catch(error => console.log('error', error));
-
 }
 
-function checkSaldoSender() {
+async function checkSaldoSender() {
     const inputAmountEuro = getUserInput('transaction_amount_euro');
     const iban = localStorage.getItem("SelectedIban");
 
@@ -108,25 +102,22 @@ function checkSaldoSender() {
         redirect: 'follow'
     };
 
-    fetch(`http://localhost:8888/checkIfSufficientFunds?fundsInEuro=${inputAmountEuro}&inputAmountEuro=$&iban=${iban}`, requestOptions)
+    await fetch(`http://localhost:8888/checkIfSufficientFunds?fundsInEuro=${inputAmountEuro}&inputAmountEuro=$&iban=${iban}`, requestOptions)
         .then(response => response.text())
-        .then(result =>{
-            console.log("api call check saldo: "+result)
-            if (result==="true"){
-                storeElementInLocalStorage("checkIfSufficientFunds", "true")
-
-            } else {
-                storeElementInLocalStorage("checkIfSufficientFunds", "false")
-            } })
+        .then(result => {
+            console.log("api call check saldo: " + result)
+            storeElementInLocalStorage("checkIfSufficientFunds", result)
+        })
         .catch(error => console.log('error', error));
-
 }
 
 async function checkAllInformation(){
     // check if field requirements are met
-
-    checkIBANinDatabase();
-    checkSaldoSender();
+    console.log("calling 1 "+new Date().getTime())
+    await checkIBANinDatabase();
+    console.log("calling 2 "+new Date().getTime())
+    await checkSaldoSender();
+    console.log("finished 3 "+new Date().getTime())
 
     let booleanIban = retrieveElementFromLocalStorage("existsIbanInDatabase")==="true"
     let booleanFunds = retrieveElementFromLocalStorage("checkIfSufficientFunds")==="true"
@@ -138,18 +129,24 @@ async function checkAllInformation(){
 
     console.log("combined boolean " + checkReqs2)
 
-    if (checkReqs2) {
+    // reset input fields
+    resetHighlightInputField("recipient_IBAN");
+    resetHighlightInputField("transaction_amount_euro");
+
+    if (checkReqs2){
 
         const receiverIban = document.getElementById("recipient_IBAN");
 
         console.log("je zit nu in if statement ");
-        // window.location.href = "transferOverview.html";
+        goToTransferPage();
+        getALLUserInput();
+        window.location.href = "transferOverview.html";
 
-    } else if (!retrieveElementFromLocalStorage("existsIbanInDatabase")){
+    } else if (retrieveElementFromLocalStorage("existsIbanInDatabase")==="false"){
         // if code reqs not met, give error
         highlightInputField("recipient_IBAN");
         console.log("je zit nu in else if statement iban ");
-    } else if(!retrieveElementFromLocalStorage("checkIfSufficientFunds")){
+    } else if(retrieveElementFromLocalStorage("checkIfSufficientFunds")==="false"){
         // if account reqs not met, give error
         highlightInputField("transaction_amount_euro");
         console.log("je zit nu in else if statement euro amount  ");

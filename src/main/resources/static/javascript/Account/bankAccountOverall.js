@@ -6,7 +6,7 @@ function setCurrentDate(elementID) {
 }
 
 //retrieve balance, iban, name of account by from login User
-async function getSelectedAccountInfo(ibanElement,nameElement,balanceElement) {
+async function getSelectedAccountInfo(ibanElement,nameElement,balanceElement,imageElement) {
 
     console.log("start of loading")
     let requestOptions = {
@@ -31,6 +31,20 @@ async function getSelectedAccountInfo(ibanElement,nameElement,balanceElement) {
             else {
                 document.getElementById(balanceElement).innerHTML = "€ " + balanceValueInCents.slice(0, -2) + "," + balanceValueInCents.slice(-2)
             }
+            let firstName
+            let secondName
+            if(name.includes(",")){
+                let splitName= name.split(",")
+                firstName = splitName[1]
+                secondName = splitName[0]
+            } else{
+                let splitCompanyName= name.split(" ")
+                firstName = splitCompanyName[0]
+                secondName = splitCompanyName[1]
+
+            }
+
+            document.getElementById(imageElement).setAttribute("src",`https://eu.ui-avatars.com/api/?name=${firstName}+${secondName}&background=random`)
         })
 
         .catch(error => console.log('error', error));
