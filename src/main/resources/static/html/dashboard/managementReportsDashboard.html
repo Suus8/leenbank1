@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Management Dashboard - LeenmanBank</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -48,7 +49,7 @@
                 <!-- Right navbar links -->
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                     <li class="nav-item">
-                        <a href="../../html/login.html" class="nav-link">Login</a>
+                        <a href="../../html/login.html" class="nav-link" onclick="clearLocalStorage()">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -295,9 +296,8 @@
     <!-- AdminLTE App -->
     <script src="../../dependencies/adminlte.min.js"></script>
 
-    <script src="../../javascript/managementReportsDashboard.js">
-
-    </script>
+    <script src="../../javascript/managementReportsDashboard.js"></script>
+    <script src="../../javascript/generalFunctions.js"></script>
 
 </body>
 </html>

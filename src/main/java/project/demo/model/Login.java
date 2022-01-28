@@ -2,7 +2,6 @@ package project.demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import java.util.Objects;
@@ -28,9 +27,9 @@ public class Login implements Comparable<Login> {
      * @param password  Password to log in on the online account
      *
      * @should Create a valid Login with all above details
-     * @should Check if the username is unique TODO
-     * @should Check if the password has at least 2 characters TODO
-     * @should Throw illegal argument exception if the password has less than 2 characters TODO
+     * @should Check if the username is unique
+     * @should Check if the password has at least 2 characters
+     * @should Throw illegal argument exception if the password has less than 2 characters
      */
     public Login(String username, String password) {
         this.username = username;

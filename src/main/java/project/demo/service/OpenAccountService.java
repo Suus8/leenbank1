@@ -2,10 +2,7 @@ package project.demo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import project.demo.model.Account;
-import project.demo.model.AccountType;
-import project.demo.model.Company;
-import project.demo.model.Person;
+import project.demo.model.*;
 import project.demo.repositories.IAbstractClientRepo;
 import project.demo.repositories.ILoginRepository;
 
@@ -21,6 +18,9 @@ public class OpenAccountService {
     IAbstractClientRepo clientRepo;
 
     //region METHODS
+    public String getSectorAsEnum(String sectorLabel){
+        return Sector.valueOfLabel(sectorLabel).name();
+    }
     public void createNewConsumerAccount(Person newClient) {
         // TODO: is it needed do do check on SSN/CoC in a cliëntservice/in this service? Or is front end check sufficient?
         newClient.addAccount(new Account(newClient, AccountType.CONSUMER));

@@ -18,7 +18,7 @@ public class ClientDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
-    private String telephoneNumber; // TODO update UML
+    private String telephoneNumber;
     private String street;
     private int houseNumber;
     private String houseNumberAddition;
@@ -40,7 +40,7 @@ public class ClientDetails {
      * @param city                City of client
      *
      * @should Create a valid ClientDetails with all above details
-     * @should At least contain an email or address or telephone number //TODO
+     * @should At least contain an email or address or telephone number
      */
     public ClientDetails(String email, String telephoneNumber, String street, int houseNumber, String houseNumberAddition, String zipCode, String city) {
         this.email = email;

@@ -30,6 +30,11 @@ public class OpenAccountController {
     //endregion
 
     //region METHODS - GET (param)
+    @RequestMapping(value = "/getSectorAsEnum", method = RequestMethod.GET)
+    public String getSectorAsEnum(@Param("sectorAsString") String sectorLabel) {
+        return openAccountService.getSectorAsEnum(sectorLabel);
+    }
+
     @RequestMapping(value = "/checkUsername", method = RequestMethod.GET)
     public boolean checkUsername(@Param("username") String username) {
         return openAccountService.checkUsername(username);

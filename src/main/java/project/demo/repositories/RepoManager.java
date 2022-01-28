@@ -15,16 +15,6 @@ public class RepoManager {
 
     }
 
-    //region METHODS
-//    public boolean containsAbstractClient(String username){
-//        return abstractClientRepo.findAbstractClientByUsername(username);
-//    }
-//
-//    public AbstractClient getAbstractClientByUsername(String username){
-//        return abstractClientRepo.getAbstractClientByUsername(username);
-//    }
-    //endregion
-
     //region GETTERS & SETTERS
     public static RepoManager getRepoManager() {
         if (repoManager == null) {

@@ -28,7 +28,6 @@ function getAllAccounts() {
 async function getAccounts(endpoint, container) {
     let authorizedAccountData
 
-
     const id = localStorage.getItem("clientId")
     const url = `http://localhost:8888/${endpoint}?id=${id}`
     authorizedAccountData = await fetchData(url,'GET')
@@ -48,11 +47,7 @@ async function getAccounts(endpoint, container) {
         const p = document.createElement("p")
 
         let balanceValueInCents = obj["accountBalanceInCents"].toString()
-        if (balanceValueInCents === "0") {
-            p.innerText = "€ 0"
-        } else {
-            p.innerText = "€ " + balanceValueInCents.slice(0, -2) + "," + balanceValueInCents.slice(-2)
-        }
+            p.innerText = convertAmountInCentsToReadableString(balanceValueInCents)
         div.appendChild(p)
 
         const p_account_Owner = document.createElement("p")
@@ -75,9 +70,6 @@ async function getAccounts(endpoint, container) {
         container.appendChild(div)
     })
 }
-
-
-
 
 function createHyperlink(iban, link, text) {
     const a = document.createElement("a")

@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import project.demo.model.AbstractClient;
 import org.springframework.data.repository.CrudRepository;
+import project.demo.model.Account;
 
 @Repository
 public interface IAbstractClientRepo extends CrudRepository<AbstractClient, Long> {
@@ -17,4 +18,6 @@ public interface IAbstractClientRepo extends CrudRepository<AbstractClient, Long
     @Query(value = "SELECT dtype FROM abstract_client a WHERE id=?1", nativeQuery = true)
     String getDtypeByLoginId(Long loginId);
     //endregion
+
+    AbstractClient getAbstractClientByAccountsIsContaining(Account account);
 }

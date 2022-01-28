@@ -2,6 +2,7 @@
 // Keys local storage
 const typeOfAccount = "typeOfAccount",
     sector = "sector",
+    sectorAsEnum = "sectorAsEnum";
     username = "username",
     replyFromApi = "replyFromApi";
 //endregion
@@ -93,9 +94,11 @@ function saveAccountTypeAndShowStep2() {
     // if account type is smallBusiness, also save sector to local device
     if (getRadioButtonChoice() === "Zakelijk") {
         localStorage.setItem(sector, getUserInput('sectorDropdownOptions'))
+        localStorage.setItem(sectorAsEnum, apiGetSectorAsEnum(getUserInput('sectorDropdownOptions')))
     } else {
         // clear sector should there have been saves before
         localStorage.setItem(sector, null)
+        localStorage.setItem(sectorAsEnum, null)
     }
 
     // lock input
@@ -300,6 +303,10 @@ function updateOnInputCheckCoC(coCId) {
 //endregion
 
 //region Functions regarding API
+function apiGetSectorAsEnum(sectorAsString){
+
+}
+
 function apiCheckIfUsernameExists(usernameString) {
     let requestOptions = {
             method: 'GET',
@@ -420,7 +427,7 @@ function createJSONSmallBusinessAccount() {
         },
         "companyDetails": {
             "name": getUserInput("companyNameInput"),
-            "sector": localStorage.getItem(sector)
+            "sector": localStorage.getItem(sectorAsEnum)
         }
     });
 }

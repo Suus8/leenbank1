@@ -1,4 +1,3 @@
-// TODO check transaction amount is within range
 
 // on loading page
 window.onload = function () {
@@ -26,7 +25,6 @@ function validateIBAN() {
 
 // check amount
 function checkSenderBalanceHasEnoughMoney() {
-    //TODO check if this works with new code later on
     console.log(localStorage.getItem("senderBalance"));
     if (getUserInputEuroAmount() > localStorage.getItem("senderBalance")) {
         alert("Uw heeft niet genoeg geld in je rekening om deze transactie te doen ");

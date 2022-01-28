@@ -2,9 +2,173 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
-</head>
-<body>
+    <title>Employee Dashboard - LeenmanBank</title>
 
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../dependencies/all.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../../dependencies/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../../dependencies/adminlte.min.css">
+    <link rel="stylesheet" href="../../css/main.css">
+
+    <script rel="script" src="../../javascript/domManipulationMethods.js"></script>
+
+</head>
+<body class="hold-transition layout-top-nav">
+    <div class="wrapper">
+
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+            <div class="container">
+                <a href="#" class="navbar-brand">
+                    <img src="../../images/cmc_logo.png" alt="CMC Logo" class="brand-image">
+                    <span class="brand-text font-weight-bold cmc-blauw">LeenmanBank</span>
+                </a>
+                <!-- Navbar toggler -->
+                <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
+                        data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Rekeningoverzicht</a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Right navbar links -->
+                <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                    <li class="nav-item">
+                        <a href="../../html/login.html" class="nav-link">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- /.navbar -->
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+
+            <!-- PAGE HEADER (and active client name indicator on the right) -->
+            <div class="content-header">
+                <div class="container">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0">Pinautomaat koppelen</h1>
+                        </div><!-- /.col -->
+                        <div class="col-sm-6">
+                            <h5 id="active-client-name-breadcrumb" class="float-right"></h5>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+
+            <!-- MAIN CONTENT -->
+            <div class="content">
+                <div class="container">
+
+                    <!-- EIGEN REKENINGEN -->
+                    <div class="card card-primary shadow">
+
+                        <section class="content">
+                            <div class="container-fluid">
+
+                                <!-- Company Overview -->
+                                <div class="col-12 col-sm-12 col-md-6 d-flex align-items-stretch flex-column">
+
+                                    <div id="checkButton" onclick="loadAccount()" class="input-group mb-3">
+
+                                        <!-- /btn-group -->
+                                        <input id="IbanInput" type="text" class="form-control" placeholder="IBAN">
+                                        <div class="input-group-prepend">
+                                            <button type="button" class="btn btn-danger">Controleer Account</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- ACCOUNT DETAILS CARD -->
+                                    <div class="card bg-light d-flex flex-fill">
+
+                                        <div class="card-header text-muted border-bottom-0">
+                                            <h6>Koppel pinautomaat aan :</h6>
+                                        </div>
+
+
+                                        <div class="card-body pt-0">
+                                            <div class="row">
+                                                <div class="col-7">
+
+                                                    <h2 class="lead text-bold" id="userFullName">
+                                                        Naam bedrijf</h2>
+                                                    <div>
+                                                        <p id="balance">
+                                                            € Balance
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-5 text-center">
+                                                    <img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;"
+                                                         id="senderAvatar"
+                                                         alt="user-avatar" class="img-circle img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="text-left">
+                                                <h5 class="pt-0">
+                                    <span style="color: darkred;">
+                                        <i class="fas fa-lg fa-credit-card " style="margin-right:5px;"></i>
+                                    </span>
+                                                    <span id="accountIBAN">BankIBAN</span></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button id="controlNumber" onclick="generateRegistrationCodePinTerminal()" type="button"
+                                        class="btn btn-block bg-gradient-info btn-lg">Vraag controlegetal aan
+                                </button>
+                                <br>
+                                <p id="pin">pin</p>
+
+
+                            </div>
+                            <!-- /.row -->
+                        </section>
+                    </div><!-- /.container-fluid -->
+                    <!-- /.content -->
+                </div>
+
+                <!-- Hier verder typen -->
+
+                <button id="connectButton" type="button" class="btn btn-block bg-gradient-info btn-lg">Automaat
+                    Koppelen
+                </button>
+
+
+
+
+
+            </div>
+
+            <!-- jQuery -->
+            <script src="../../dependencies/jquery.min.js"></script>
+            in
+            <!-- Bootstrap 4 -->
+            <script src="../../dependencies/bootstrap.bundle.min.js"></script>
+            <!-- AdminLTE App -->
+            <script src="../../dependencies/adminlte.min.js"></script>
+            <script defer src="../../javascript/Account/bankAccountOverall.js"></script>
+            <script src="../../javascript/dashboardEmployee.js"></script>
+            <script defer src="../../javascript/generalFunctions.js"></script>
 </body>
+
+
 </html>

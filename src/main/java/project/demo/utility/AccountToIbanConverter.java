@@ -1,7 +1,5 @@
 package project.demo.utility;
 
-import javax.validation.constraints.Max;
-
 public final class AccountToIbanConverter {
 
     private static final String IBAN_COUNTRY_CODE = "NL";

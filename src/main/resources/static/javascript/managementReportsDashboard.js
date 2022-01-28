@@ -4,12 +4,9 @@ function updateLastRefreshDateTime() {
     let now = new Date();
     let date = now.toLocaleDateString()
     let time = now.toLocaleTimeString()
-
     document.querySelector("#last-refresh-date").append(date)
     document.querySelector("#last-refresh-time").append(time)
-
 }
-
 updateLastRefreshDateTime()
 
 function balanceInCentsToEuro(balanceValueInCents) {
